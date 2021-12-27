@@ -1,0 +1,6 @@
+[user]
+	name = Marcus Plutowski
+	email = achierius@gmail.com
+
+[core]
+  editor = vim -X
