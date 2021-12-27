@@ -21,6 +21,9 @@ Plug 'tmhedberg/SimpylFold'
 
 "Plug 'powerline/powerline'
 
+Plug 'christoomey/vim-tmux-navigator' " Makes it easier to nav b/w tmux and vim panes
+
+Plug 'tpope/vim-obsession' " Streamlines vim session tracking
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -132,9 +135,10 @@ set autoindent
 "set textwidth=79
 highlight MatchParen ctermbg=4
 set                    tabstop=2 softtabstop=2 shiftwidth=2
+au Filetype nasm   set tabstop=4 softtabstop=4 shiftwidth=4
 au Filetype c      set tabstop=8 softtabstop=0 shiftwidth=8
 au Filetype cpp    set tabstop=4 softtabstop=4 shiftwidth=4
-au Filetype python set tabstop=4 softtabstop=4 shiftwidth=4
+au Filetype python set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=80
 au Filetype java   set tabstop=4 softtabstop=4 shiftwidth=4
 au Filetype csv    set textwidth=0
 
