@@ -22,9 +22,6 @@ else
     start_agent;
 fi
 
+# Load repo tool
 
-# Add things to PATH
-
-PATH=$PATH:$HOME/.local/bin:$HOME/bin
-
-export PATH
+module load git-repo

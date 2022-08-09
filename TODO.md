@@ -10,6 +10,8 @@
 
 + Reorganize into hierarchial sections
 + Finalize the switch to Neovim
++ Actually use ftdetect
++ Add LLVM utils properly: https://github.com/llvm-mirror/llvm/tree/master/utils/vim/ftdetect
 
 ##Tmux:
 

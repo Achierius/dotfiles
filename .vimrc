@@ -6,7 +6,8 @@
 
   " Useful guide: https://github.com/romainl/idiomatic-vimrc
   " Not actually needed 
-  "set t_Co=256
+  " TODO avodi color shifting when opening a window: https://www.reddit.com/r/vim/comments/fos5w/problem_colors_shifting_upon_open/c1hiv5h/; this didn't fix it tho :(
+  set t_Co=256
 
   " Use Unicode (necessary?)
   scriptencoding utf-8
@@ -27,14 +28,17 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
   Plug 'tmhedberg/SimpylFold'
 
+  Plug 'gcmt/taboo.vim' " Tab renaming
+    set sessionoptions+=tabpages,globals " Tabnames are stored in saved sessions
+
   Plug 'christoomey/vim-tmux-navigator' " Makes it easier to nav b/w tmux and vim panes
 
   Plug 'tpope/vim-obsession' " Streamlines vim session tracking; TODO make sure this actually works
 
-  " Lighter powerline
-  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline' " Lighter powerline
   Plug 'vim-airline/vim-airline-themes'
     let g:airline#extensions#tabline#enabled = 1
+    let g:airline#extensions#bufferline#enabled = 0
     let g:airline_powerline_fonts = 1
     if !exists('g:airline_symbols')
       let g:airline_symbols = {}
@@ -44,6 +48,10 @@
 
   " Using airline instead
   ""Plug 'powerline/powerline'
+
+  " Bufferline extension!
+  Plug 'bling/vim-bufferline'
+    let g:bufferline_rotate = 1
 
   " TODO set up syntastic properly
   ""Plug 'vim-syntastic/syntastic'
@@ -56,8 +64,7 @@
     let g:python_highlight_all=1
   ""Plug 'vim-scripts/indentpython.vim'
 
-  " Some sort of Syntastic extension?
-  Plug 'idris-hackers/idris-vim'
+  Plug 'idris-hackers/idris-vim' " Syntastic extension for Idris?
 
   Plug 'neovimhaskell/haskell-vim'
     let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
@@ -82,8 +89,7 @@
 
   " Disabled for now because I do this with the native vim browser or the tmux one instead
   ""Plug 'scrooloose/nerdtree'
-  " This is how I got vim to do this for <C-Space>
-    map <C-@> :NERDTreeToggle<CR>
+  "  map <C-@> :NERDTreeToggle<CR> " This is how I got vim to do this for <C-Space>
 
   "" Fuzzy finding
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -96,7 +102,6 @@
   " plugin for git stuff, TODO need to figure this out
   Plug 'tpope/vim-fugitive'
 
-  " csv handling
   Plug 'chrisbra/csv.vim'
 
   call plug#end()
@@ -181,6 +186,8 @@
   " Buffer configs
   nnoremap <M-PageDown> :bnext<CR>
   nnoremap <M-PageUp> :bprevious<CR>
+  "??
+  nnoremap gb :ls<CR>:buffer<Space>
   set hidden
 
   " Tab management
@@ -232,17 +239,19 @@
   " Sets colorschemes to update per file
   " https://www.reddit.com/r/vim/comments/5uep00/can_vim_auto_change_color_scheme_based_on_file/
   " TODO this one day w/a dictionary
+  ""let g:colors_name = get(g:, 'colors_name', 'default')
   ""let s:saved_colorscheme = g:colors_name
   ""function! s:check_colorscheme_on_bufenter() abort
-  ""    if &ft == 'wiki' && g:colors_name != 'whatyouwant'
+  ""    if (&ft == 'cpp' || &ft == 'c') && g:colors_name != 'molokai'
   ""        let s:saved_colorscheme = g:colors_name
-  ""        colorscheme whatyouwant
-  ""    elseif &ft != 'wiki' && g:colors_name == 'whatyouwant'
+  ""        colorscheme molokai
+  ""        syntax on
+  ""    elseif (&ft != 'cpp' || &ft != 'c') && g:colors_name == 'molokai'
   ""        exe 'colorscheme '.s:saved_colorscheme
   ""    endif
   ""endfunction
   ""
-  ""augroup WikiColorScheme
+  ""augroup CppColorScheme
   ""    au!
   ""    au BufEnter * call s:check_colorscheme_on_bufenter()
   ""augroup END
