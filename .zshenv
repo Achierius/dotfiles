@@ -3,10 +3,11 @@
 
 # NO ALIASES!
 
-# Path modifications
-export PATH="$PATH:/rivos/llvm/bin/"
+# Add things to PATH
+PATH=$HOME/.local/bin:$HOME/bin:$PATH
+PATH="$PATH:/rivos/llvm/bin/"
+export PATH
 
 # Other environment variables
 export LANG=en_US.UTF-8 # set correct code page, very important
 export DOTFILE_HOME=~/dotfiles
-

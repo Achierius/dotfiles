@@ -14,6 +14,9 @@ HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.zsh_history
 
+# Aliases
+alias vim='vim -X'
+
 # Use modern completion system
 autoload -Uz compinit
 compinit
@@ -35,3 +38,17 @@ zstyle ':completion:*' verbose true
 
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
+
+echo $PATH
+# Add things to PATH
+PATH=$PATH:$HOME/.local/bin:$HOME/bin
+# Path modifications
+PATH="$PATH:/rivos/llvm/bin/"
+
+PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/rivos/llvm/bin/:/home/marcus/.local/bin:/home/marcus/bin:/rivos/rig/cuda/bin:/home/marcus/.local/bin:/home/marcus/bin:/rivos/llvm/bin/"
+
+echo $PATH
+
+export PATH
+echo $PATH
+
