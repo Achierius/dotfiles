@@ -1,0 +1,24 @@
+cat ~/.ctags
+--recurse=yes
+--exclude=.git
+--exclude=BUILD
+--exclude=meson.build
+--exclude=build/*
+--exclude=log/*
+--exclude=\*.min.\*
+--exclude=\*.swp
+--exclude=\*.swo
+--exclude=\*.swn
+--exclude=\*.swm
+--exclude=\*.o
+--exclude=\*.dump
+--exclude=\*.log
+--exclude=\*.bak
+--exclude=\*.so
+--exclude=\*.a
+--exclude=\*.pdb
+--exclude=\*.pyc
+--exclude=\*.sln
+--exclude=\*.csproj
+--exclude=\*.csproj.user
+--exclude=\*.cache
