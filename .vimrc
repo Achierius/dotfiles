@@ -45,6 +45,9 @@
     endif
     let g:airline_symbols.space = "\ua0"
     set fillchars+=stl:\ ,stlnc:\
+    let g:airline_exclude_preview = 1
+    let g:airline_highlighting_cache = 1
+
 
   " Using airline instead
   ""Plug 'powerline/powerline'
@@ -63,6 +66,8 @@
   Plug 'vim-python/python-syntax'
     let g:python_highlight_all=1
   ""Plug 'vim-scripts/indentpython.vim'
+
+  Plug 'bfrg/vim-cpp-modern'
 
   Plug 'idris-hackers/idris-vim' " Syntastic extension for Idris?
 
@@ -91,8 +96,13 @@
   ""Plug 'scrooloose/nerdtree'
   "  map <C-@> :NERDTreeToggle<CR> " This is how I got vim to do this for <C-Space>
 
-  "" Fuzzy finding
+  " Fuzzy finding
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  "" recc'd by: apt-cache-show fzf
+  source /usr/share/doc/fzf/examples/fzf.vim
+
+  " Meson filetype / syntax / indentation
+  Plug 'stfl/meson.vim'
 
   " Don't use it enough, too laggy
   ""Plug 'Valloric/YouCompleteMe'
@@ -131,6 +141,9 @@
   " cup
   autocmd BufNewFile,BufRead *.cup set filetype=cup
 
+  "" 'au' vs. 'u!' ?
+  au BufRead,BufNewFile *.mri set filetype=json
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Core editor config
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -140,6 +153,10 @@
   set ttimeoutlen=10
   set formatoptions+=j
   set cursorcolumn
+  set wildmenu
+  set wildignorecase
+  set wildmode=full
+
   "" highlight CursorColumn guibg=#404040
 
   " Editing QoL improvements
@@ -201,10 +218,10 @@
   au Filetype asm    set tabstop=2 softtabstop=2 shiftwidth=2
   au Filetype nasm   set tabstop=2 softtabstop=2 shiftwidth=2
   au Filetype riscv  set tabstop=4 softtabstop=4 shiftwidth=4
-  au Filetype meson  set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=80
   au Filetype python set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=80
   au Filetype java   set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=80
   au Filetype csv    set textwidth=0
+  au Filetype meson  set textwidth=100
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Colors / style
@@ -224,11 +241,16 @@
   au Filetype haskell   colorscheme vorange
   au Filetype gitcommit colorscheme gardener
   au Filetype gitconfig colorscheme gardener
+  au Filetype meson     colorscheme turtles
   au Filetype objdump   colorscheme elflord
+  au Filetype json      colorscheme molokai
   " I like evening instead if 256 colors aren't enabled
   ""au Filetype c      colorscheme evening
   ""au Filetype cpp    colorscheme slate
   ""au Filetype python colorscheme industry
+
+  " accept /// as a comment for cpp files
+  autocmd Filetype c,cpp set comments^=:///
 
   " highlight matching parentheses/etc.
   highlight MatchParen ctermbg=4
