@@ -1,2 +1,4 @@
 *.swp
 *.swo
+config/nvim/plugged/
+config/nvim/colors/
