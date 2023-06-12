@@ -49,7 +49,7 @@ require'nvim-treesitter.configs'.setup {
 
   -- Experimental™
   indent = {
-    enable = true
+    enable = false
   },
 }
 
