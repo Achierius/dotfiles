@@ -1,5 +1,10 @@
 setopt histignorealldups sharehistory extendedglob
 
+# To profile: load
+#   zmodload zsh/zprof
+# and then at the end of .zshrc
+#   zprof
+
 # Path modifications
 export ZSH="$HOME/.oh-my-zsh"
 PATH="$PATH:/rivos/llvm/bin/"
@@ -88,6 +93,15 @@ plugins=(git fzf zsh-vi-mode)
 
 # required for compat b/w zsh-vi-mode and fzf: https://github.com/jeffreytse/zsh-vi-mode/issues/24
 export ZVM_INIT_MODE=sourcing
+
+# Don't "load only from secure directories", just load from everywhere
+# Reduces startup time by like half, esp. since we avoid trawling NFS
+export ZSH_DISABLE_COMPFIX="true"
+
+# Don't autoupdate: make sure to run omz update
+# Also for performance reasons
+export DISABLE_AUTO_UPDATE="true"
+
 source $ZSH/oh-my-zsh.sh
 
 # Sourcing the following (key-bindings, completion) was recc'd by: "apt-cache-show fzf"
@@ -180,4 +194,3 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
