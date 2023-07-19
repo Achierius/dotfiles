@@ -87,16 +87,23 @@ export FZF_COMPLETION_TRIGGER=';;' # vs. default **
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git fzf zsh-vi-mode)
+# https://github.com/unixorn/awesome-zsh-plugins#plugins
+plugins=( git fzf shellfirm z zsh-syntax-highlighting )
+# Enabled:
+#   - git: obvious
+#   - fzf: completion
+#   - shellfirm: warn when I try to do dumb things
+#   - z: jump around magically, https://github.com/agkozak/zsh-z
+#   - zsh-syntax-highlighting: it just looks nice
+# Disabled:
+#   - zsh-vi-mode: couldn't get the hang of it, was slowing down startup
 
 # required for compat b/w zsh-vi-mode and fzf: https://github.com/jeffreytse/zsh-vi-mode/issues/24
 export ZVM_INIT_MODE=sourcing
 
 # Don't "load only from secure directories", just load from everywhere
 # Reduces startup time by like half, esp. since we avoid trawling NFS
-export ZSH_DISABLE_COMPFIX="true"
+export ZSH_DISABLE_COMPFIX=1
 
 # Don't autoupdate: make sure to run omz update
 # Also for performance reasons
