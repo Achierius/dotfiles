@@ -22,6 +22,15 @@ else
     start_agent;
 fi
 
-# Load repo tool
 
-module load git-repo
+# Add things to PATH
+
+PATH=$PATH:$HOME/.local/bin:$HOME/bin:/rivos/rig/cuda/bin
+
+# Remove troublesome entry from path - was slowing down certain folders
+directory_to_remove='/tools/foss/modules/4.7.1/bin'
+PATH=:$PATH:
+PATH=${PATH//:$directory_to_remove:/:}
+PATH=${PATH#:}; PATH=${PATH%:}
+
+export PATH
