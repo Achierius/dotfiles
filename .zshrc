@@ -168,15 +168,19 @@ precmd_functions+=( precmd_vcs_info )
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
 alias ohmyzsh="mate ~/.oh-my-zsh"
 alias tmux="tmux -u"
 alias git-watch="watch -c -t -n3 git --no-optional-locks -c color.status=always status"
 alias git-logwatch="watch -c -t -n5 git --no-optional-locks -c color.ui=always log --decorate --oneline"
 alias -g up='popd'
 alias gmake="make"
+
+# LS aliases
+# Maybe change colors someday https://the.exa.website/docs/colour-themes
+alias l='exa --icons'
+alias la='exa --icons -a'
+alias lx='exa --icons -x'
+alias lax='exa --icons -a -x'
 
 # Git aliases from https://hackernoon.com/lesser-known-git-commands-151a1918a60
 git config --global alias.please 'push --force-with-lease'
