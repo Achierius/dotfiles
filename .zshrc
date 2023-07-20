@@ -88,13 +88,14 @@ export FZF_COMPLETION_TRIGGER=';;' # vs. default **
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # https://github.com/unixorn/awesome-zsh-plugins#plugins
-plugins=( git fzf shellfirm z zsh-syntax-highlighting )
+plugins=( git fzf shellfirm z zsh-syntax-highlighting zsh-autosuggestions )
 # Enabled:
 #   - git: obvious
 #   - fzf: completion
 #   - shellfirm: warn when I try to do dumb things
 #   - z: jump around magically, https://github.com/agkozak/zsh-z
 #   - zsh-syntax-highlighting: it just looks nice
+#   - zsh-autosuggestions: autosuggestions based on history; !Still need to configure!
 # Disabled:
 #   - zsh-vi-mode: couldn't get the hang of it, was slowing down startup
 
@@ -163,6 +164,10 @@ precmd_functions+=( precmd_vcs_info )
 #xmodmap -e 'keycode 65 = space underscore' # Requires x11-xserver-utils
 # Map Shift+Space to '_' in the console
 # TODO # Requires console-data
+
+# Keybinds for zsh-autosuggestions
+#bindkey '^ ' autosuggest-accept # Binds to ctrl-space
+bindkey '^[[Z' autosuggest-accept # Binds to shift-tab
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
