@@ -40,7 +40,8 @@ local lspkind = require('lspkind')
 cmp.setup {
   preselect = 'item',
   completion = {
-    completeopt = 'menu,menuone,noinsert'
+    autocomplete = false,
+    completeopt = 'menu,menuone,noinsert',
   },
   sources = {
     -- TODO Add more sources
@@ -75,5 +76,3 @@ cmp.setup {
     ['<C-b>'] = cmp_action.luasnip_jump_backward(),
   },
 }
---cmp.setup({
---})
