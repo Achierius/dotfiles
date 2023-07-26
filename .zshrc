@@ -195,6 +195,7 @@ git config --global alias.staash 'stash --include-untracked'
 git config --global alias.staaash 'stash --all'
 git config --global alias.qstat 'status --short --branch' # was "shorty"/"st"
 git config --global alias.grog 'log --graph --abbrev-commit --decorate --all --format=format:"%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(dim white) - %an%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n %C(white)%s%C(reset)"'
+git config --global alias.count-lines "! git log --author=\"\$1\" --pretty=tformat: --numstat | awk '{ add += \$1; subs += \$2; loc += \$1 - \$2 } END { printf \"added lines: %s, removed lines: %s, total lines: %s\n\", add, subs, loc }' #"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
