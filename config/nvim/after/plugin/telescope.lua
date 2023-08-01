@@ -51,7 +51,8 @@ require("telescope").setup {
     find_files = {
     },
     buffers = {
-      sort_lastused = true,
+      --sort_lastused = true,
+      sort_mru = true,
       -- previewer = false,
       mappings = {
         i = {
@@ -89,14 +90,20 @@ require("telescope").setup {
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fr', builtin.lsp_references, {})
-vim.keymap.set('n', '<leader>fd', builtin.diagnostics, {})
+vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, {})
+vim.keymap.set('n', '<leader>fS', builtin.lsp_workspace_symbols, {})
+
+vim.keymap.set('n', '<leader>fd', function() builtin.diagnostics({bufnr = 0}) end, {})
+vim.keymap.set('n', '<leader>fD', builtin.diagnostics, {})
 
 vim.keymap.set('n', '<leader>rg', builtin.live_grep, {})
 --vim.keymap.set('n', '<leader>rg', function() builtin.live_grep(require('telescope.themes').get_ivy({})) end, {})
 
+vim.keymap.set('n', '<leader>fgc', builtin.git_commits, {}) -- <cr> checkout, <C-r>m mixed reset, <C-R>s soft reset, <C-r>h hard reset
+vim.keymap.set('n', '<leader>fgb', builtin.git_branches, {}) -- <cr> checkout, <C-t> track, <C-r> rebase, <C-a> create, <C-s> switch, <C-d> delete, <C-y> merge
 vim.keymap.set('n', '<leader>fgf', builtin.git_files, {})
-vim.keymap.set('n', '<leader>fgd', builtin.git_status, {})
-vim.keymap.set('n', '<leader>fgs', builtin.git_stash, {})
+vim.keymap.set('n', '<leader>fgs', builtin.git_status, {})
+vim.keymap.set('n', '<leader>fgS', builtin.git_stash, {})
 
 -- Resume my most recently closed telescope window
 -- https://www.reddit.com/r/neovim/comments/13y3thq/whats_a_very_simple_config_change_that_you_cant/jml45v1/
