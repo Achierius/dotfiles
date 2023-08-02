@@ -1,12 +1,3 @@
--- first we set up tabline as disabled: still make tab/buffer lists but don't use them
-local tabline = require('tabline')
-tabline.setup({enable = false, })
-
--- vim.api.nvim_create_autocmd({"WinEnter"}, {
---     pattern = {"*"},
---     command = "TablineToggleShowAllBuffers",
--- })
-
 require('lualine').setup {
   options = {
     icons_enabled = true,
@@ -43,16 +34,50 @@ require('lualine').setup {
     lualine_z = {}
   },
   tabline = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = {tabline.tabline_buffers},
-    lualine_x = {tabline.tabline_tabs},
-    lualine_y = {},
-    lualine_z = {}
+    lualine_a = {
+      {
+        'windows',
+        show_filename_only = true,
+        show_modified_status = true,
+        mode = 0, -- 0: name; 1: index; 2: name + index
+        disabled_buftypes = { 'quickfix', 'prompt' },
+        filetype_names = {
+          TelescopePrompt = 'Telescope',
+          dashboard = 'Dashboard',
+          fzf = 'FZF',
+        },
+        windows_color = {
+          -- just make the active window obvious
+          active = { gui='bold' },
+          inactive = { gui='NONE' },
+        }
+      }
+    },
+    lualine_b = {
+    },
+    lualine_c = {
+    },
+    -- If I want to use tabline again
+    --lualine_c = {tabline.tabline_buffers},
+    --lualine_x = {tabline.tabline_tabs},
+    lualine_x = {},
+    lualine_y = {
+    },
+    lualine_z = {
+      {
+        'tabs',
+        mode = 2, -- 0: tab_nr, 1: tab_name, 2: tab_nr + tab_name
+        use_mode_colors = true,
+        tabs_color = {
+          active = { gui='bold' },
+          inactive = { gui='NONE' },
+        }
+      }
+    }
   },
   winbar = {},
   inactive_winbar = {},
-  extensions = {}
+  extensions = {'fugitive'}
 }
 
 -- Then finally set up fancy devicons (?)
