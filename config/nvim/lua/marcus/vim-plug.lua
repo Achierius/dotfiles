@@ -5,6 +5,10 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
 Plug('tpope/vim-sensible') -- Sensible settings
 Plug('nvim-lua/plenary.nvim') -- misc library functions
 
+-- Colorschemes
+Plug 'Marfisc/vorange' -- 'vorange', 'voblue' colorschemes
+Plug 'srcery-colors/srcery-vim' -- 'srcery' colorscheme, inspired vorange
+
 -- Pretty
 Plug('nvim-treesitter/nvim-treesitter', {['do'] = ':TSUpdate'}) -- TODO flesh out usage
 Plug('lewis6991/gitsigns.nvim')
