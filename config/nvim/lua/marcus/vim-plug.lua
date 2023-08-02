@@ -16,17 +16,21 @@ Plug('tpope/vim-fugitive')
 
 -- Navigation
 Plug('nvim-telescope/telescope.nvim', {tag = '0.1.0'})
-Plug('mbbill/undotree')
 Plug('folke/which-key.nvim')
 Plug('stevearc/aerial.nvim')
 -- Plug('kana/vim-altr') -- TODO setup
 
--- Small utilities
+-- Buffer management
 Plug('tpope/vim-eunuch') -- :Delete, :Move, :Rename
 Plug('famiu/bufdelete.nvim') -- :Bdelete
+
+-- Text editing
+Plug('andrewferrier/wrapping.nvim')
+Plug('mbbill/undotree')
+
+-- Specific filetypes
 Plug('ellisonleao/glow.nvim') -- markdown
 Plug('antiagainst/vim-tablegen')
-Plug('andrewferrier/wrapping.nvim')
 
 -- Status lines
 Plug('kdheepak/tabline.nvim')
