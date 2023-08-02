@@ -29,4 +29,7 @@ vim.cmd("colorscheme vorange")
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 
+-- Terminal
+vim.opt.shell = "/usr/bin/zsh"
+
 -- Folding is handled in nvim-treesitter
