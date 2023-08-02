@@ -37,7 +37,7 @@ Plug('ellisonleao/glow.nvim') -- markdown
 Plug('antiagainst/vim-tablegen')
 
 -- Status lines
-Plug('kdheepak/tabline.nvim')
+-- Plug('kdheepak/tabline.nvim') -- I didn't realize what people meant by "traditional tabline"
 Plug('nvim-lualine/lualine.nvim')
 Plug('nvim-tree/nvim-web-devicons')
 
