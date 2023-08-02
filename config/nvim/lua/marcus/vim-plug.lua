@@ -8,6 +8,8 @@ Plug('nvim-lua/plenary.nvim') -- misc library functions
 -- Colorschemes
 Plug 'Marfisc/vorange' -- 'vorange', 'voblue' colorschemes
 Plug 'srcery-colors/srcery-vim' -- 'srcery' colorscheme, inspired vorange
+Plug 'shaunsingh/nord.nvim' -- lua-compat 'nord' colorscheme
+Plug 'folke/tokyonight.nvim' -- 'tokyonight', tokyonight-(night|storm|day|moon)
 
 -- Pretty
 Plug('nvim-treesitter/nvim-treesitter', {['do'] = ':TSUpdate'}) -- TODO flesh out usage
