@@ -13,7 +13,7 @@ export CARGO_HOME=/rivos/cargo
 source "$CARGO_HOME/env"
 
 # https://zsh.sourceforge.io/Doc/Release/Parameters.html
-TIMEFMT=$'\n================\nCPU\t%P\nuser\t%*U\nsystem\t%*S\ntotal\t%*E'
+TIMEFMT=$'\n================\nCPU\t%P\nuser\t%*U\nsystem\t%*S\ntotal\t%*E\nmax rss\t%MKB'
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
