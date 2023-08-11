@@ -2,6 +2,7 @@
 -- TODO look through this sometime
 
 vim.keymap.set("n", "sc", ":AerialToggle<cr>", { noremap = true, silent = true, buffer = nil })
+vim.keymap.set("n", "<leader>o", ":AerialToggle<cr>", { noremap = true, silent = true, buffer = nil })
 vim.keymap.set("n", "gc", ":AerialNavOpen<cr>", { noremap = true, silent = true, buffer = nil })
 
 -- Call the setup function to change the default behavior

@@ -123,6 +123,7 @@ local leader_n_mappings = {
 
   -- Aerial
     ["sc"] = { "Toggle code outline" },
+    ["<leader>o"] = { "Toggle code outline" },
 
   -- Misc.
     ["gA"] = { "Goto alternate hpp/cpp" },
