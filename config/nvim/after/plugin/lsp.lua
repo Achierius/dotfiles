@@ -40,8 +40,7 @@ local lspkind = require('lspkind')
 cmp.setup {
   preselect = 'item',
   completion = {
-    autocomplete = false,
-    completeopt = 'menu,menuone,noinsert',
+    completeopt = 'menu,menuone,noselect,noinsert,preview',
   },
   sources = {
     -- TODO Add more sources
@@ -55,8 +54,8 @@ cmp.setup {
     format = lspkind.cmp_format({
       mode = 'symbol_text', -- show only symbol annotations
       maxwidth = 70, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-      --ellipsis_char = ' ⁊c',
-      ellipsis_char = '...',
+      ellipsis_char = ' ⁊c',
+      --ellipsis_char = '...',
 
       -- The function below will be called before any actual modifications from lspkind
       -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
@@ -74,5 +73,10 @@ cmp.setup {
     -- Navigate between snippet placeholder
     ['<C-f>'] = cmp_action.luasnip_jump_forward(),
     ['<C-b>'] = cmp_action.luasnip_jump_backward(),
+
+    -- Just enable supertab lol
+    -- This is mostly because it lets us navigate forward/backward within snippets
+    ['<Tab>'] = cmp_action.luasnip_supertab(),
+    ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
   },
 }
