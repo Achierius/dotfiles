@@ -27,7 +27,7 @@ require("aerial").setup({
     -- options will open the window in the other direction *if* there is a
     -- different buffer in the way of the preferred direction
     -- Enum: prefer_right, prefer_left, right, left, float
-    default_direction = "prefer_left",
+    default_direction = "prefer_right",
 
     -- Determines where the aerial window will be opened
     --   edge   - open aerial at the far right/left of the editor
@@ -47,7 +47,9 @@ require("aerial").setup({
   --   unfocus       - close aerial when you leave the original source window
   --   switch_buffer - close aerial when you change buffers in the source window
   --   unsupported   - close aerial when attaching to a buffer that has no symbol source
-  close_automatic_events = {},
+  close_automatic_events = {
+    "switch_buffer",
+  },
 
   -- Keymaps in aerial window. Can be any value that `vim.keymap.set` accepts OR a table of keymap
   -- options with a `callback` (e.g. { callback = function() ... end, desc = "", nowait = true })
