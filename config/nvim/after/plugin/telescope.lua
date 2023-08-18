@@ -97,6 +97,7 @@ vim.keymap.set('n', '<leader>fd', function() builtin.diagnostics({bufnr = 0}) en
 vim.keymap.set('n', '<leader>fD', builtin.diagnostics, {})
 
 vim.keymap.set('n', '<leader>rg', builtin.live_grep, {})
+vim.keymap.set('n', 'S', builtin.live_grep, {})
 --vim.keymap.set('n', '<leader>rg', function() builtin.live_grep(require('telescope.themes').get_ivy({})) end, {})
 
 vim.keymap.set('n', '<leader>fgc', builtin.git_commits, {}) -- <cr> checkout, <C-r>m mixed reset, <C-R>s soft reset, <C-r>h hard reset

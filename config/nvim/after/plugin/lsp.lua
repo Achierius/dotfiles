@@ -12,11 +12,11 @@ local lsp_config = require('lspconfig')
 lsp.on_attach(function(client, bufnr)
   lsp.default_keymaps({
     buffer = bufnr,
-    omit = {'gs', 'gl'},
+    omit = {'ss', 'sd'},
   })
 
-  vim.keymap.set("n", "<leader>ss", '<cmd>lua vim.lsp.buf.signature_help()<cr>', {noremap = true, silent = true, buffer = true})
-  vim.keymap.set("n", "<leader>sd", '<cmd>lua vim.diagnostic.open_float()<cr>', {noremap = true, silent = true, buffer = true})
+  vim.keymap.set("n", "ss", '<cmd>lua vim.lsp.buf.signature_help()<cr>', {noremap = true, silent = true, buffer = true})
+  vim.keymap.set("n", "sd", '<cmd>lua vim.diagnostic.open_float()<cr>', {noremap = true, silent = true, buffer = true})
   --vim.keymap.set({'n', 'x'}, 'F', function()
   --  vim.lsp.buf.format({async = false, timeout_ms = 10000})
   --end, opts)

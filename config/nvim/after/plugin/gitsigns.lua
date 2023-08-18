@@ -9,7 +9,8 @@ require('gitsigns').setup({
     virt_test_pos = 'eol',  -- 'eol' | 'overlay' | 'right_align'
     delay = 200,
     ignore_whitespace = true,
-  }
+  },
+  update_debounce = 300,
 })
 
-vim.keymap.set("n", "<leader>sD", ":Gitsigns toggle_word_diff<Cr>") -- Toggle inline diff
+vim.keymap.set("n", "sD", ":Gitsigns toggle_word_diff<Cr>") -- Toggle inline diff

@@ -89,6 +89,7 @@ local leader_n_mappings = {
     ["<leader>fr"] = { "List lsp references" },
     ["<leader>fd"] = { "List lsp diagnostics" },
     ["<leader>rg"] = { "Rip Grep" },
+    ["S"] = { "Rip Grep" },
     ["<leader>fg"] = { name = "+find git" },
     ["<leader>fgf"] = { "Find git file" },
     ["<leader>fgd"] = { "Show git status" },
@@ -103,27 +104,28 @@ local leader_n_mappings = {
     ["go"] = { "Goto type definition" },
     ["gr"] = { "Goto references" },
     ["ss"] = { "Show signature" },
-    ["gl"] = { "Show diagnostics in floating window" },
-    ["gc"] = { "Goto via code outline" },
     ["sd"] = { "Show diagnostics in floating window" },
-    ["<F2>"] = { "Rename all references to cursor'd symbol" }, -- none of the <F*> ones are actually <leader>-prefixed
-    ["<F3>"] = { "Format current buffer" },                    -- but this makes finding them easier
+    ["<F2>"] = { "Rename all references to cursor'd symbol" },
+    ["<F3>"] = { "Format current buffer" },
     ["<F4>"] = { "Select code action at cursor" },
     ["[d"] = { "Move to previous diagnostic in this buffer" },
     ["]d"] = { "Move to next diagnostic in this buffer" },
 
   -- Undotree
     ["<F5>"] = { "UndootreeToggle<CR>" },
+    ["su"] = { "UndootreeToggle<CR>" },
 
   -- Gitsigns
     ["sD"] = { ":Gitsigns toggle_word_diff<Cr>" },
 
   -- vim-fugitive
+    ["<leader>G"] = { "Git" },
   -- TODO make mappings for common utils?
 
   -- Aerial
     ["sc"] = { "Toggle code outline" },
     ["<leader>o"] = { "Toggle code outline" },
+    ["gc"] = { "Goto via code outline" },
 
   -- Misc.
     ["gA"] = { "Goto alternate hpp/cpp" },
