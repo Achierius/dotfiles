@@ -25,16 +25,17 @@ vim.keymap.set("n", "<C-c>", '"_ciw', opts(noremap_s, { desc = "Replace current 
 -- stop eating my paste register
 vim.keymap.set("n", "c", '"_c')
 vim.keymap.set("n", "C", '"_C')
--- I never use s, we override it later but I wish we could do this
---vim.keymap.del("n", "s")
---vim.keymap.del("n", "S")
 
--- Don't go back to start of selection when yanking
-vim.keymap.set("v", "y", "ygv<esc>", noremap_s)
-vim.keymap.set("x", "y", "ygv<esc>", noremap_s)
+-- I never use s: as such, in my settings I use it for 'show' (toggle permanent fixtures) and 'Search'
+vim.keymap.set("n", "s", "<Nop>")
+vim.keymap.set("n", "S", "<Nop>")
 
--- Pasting
-vim.keymap.set("n", '<leader>p', '<cmd>pu<CR>', opts(noremap_s, { desc = "Paste on next line" }))
+-- Copy/Paste
+  -- Don't go back to start of selection when yanking
+  vim.keymap.set("v", "y", "ygv<esc>", noremap_s)
+  vim.keymap.set("x", "y", "ygv<esc>", noremap_s)
+  -- Pasting
+  vim.keymap.set("n", '<leader>p', '<cmd>pu<CR>', opts(noremap_s, { desc = "Paste on next line" }))
 
 -- Center search results
 vim.keymap.set("n", "n", "nzz", noremap_s)
