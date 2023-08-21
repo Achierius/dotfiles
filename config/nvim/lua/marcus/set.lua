@@ -25,9 +25,10 @@ vim.opt.hlsearch = true
 vim.opt.termguicolors = true
 vim.cmd("colorscheme vorange")
 
--- Splits vertical please
+-- Splits
 vim.opt.splitbelow = true
 vim.opt.splitright = true
+vim.opt.splitkeep = "screen"
 
 -- Terminal
 vim.opt.shell = "/usr/bin/zsh"
