@@ -88,7 +88,7 @@ export FZF_COMPLETION_TRIGGER=';;' # vs. default **
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # https://github.com/unixorn/awesome-zsh-plugins#plugins
-plugins=( git fzf shellfirm z zsh-syntax-highlighting zsh-autosuggestions )
+plugins=( git fzf z zsh-syntax-highlighting zsh-autosuggestions )
 # Enabled:
 #   - git: obvious
 #   - fzf: completion
@@ -183,9 +183,9 @@ alias gmake="make"
 # LS aliases
 # Maybe change colors someday https://the.exa.website/docs/colour-themes
 alias l='exa --icons'
+alias ll='exa --icons -l'
 alias la='exa --icons -a'
-alias lx='exa --icons -x'
-alias lax='exa --icons -a -x'
+alias lla='exa --icons -la'
 
 # Git aliases from https://hackernoon.com/lesser-known-git-commands-151a1918a60
 git config --global alias.please 'push --force-with-lease'
