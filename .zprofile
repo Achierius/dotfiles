@@ -26,6 +26,7 @@ fi
 # Add things to PATH
 
 PATH=$PATH:$HOME/.local/bin:$HOME/bin:/rivos/rig/cuda/bin
+PATH=$PATH:$(go env GOPATH)/bin
 
 # Remove troublesome entry from path - was slowing down certain folders
 directory_to_remove='/tools/foss/modules/4.7.1/bin'
