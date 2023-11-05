@@ -5,7 +5,7 @@
 
 # Add things to PATH
 PATH=$HOME/.local/bin:$HOME/bin:$PATH
-PATH="$PATH:/rivos/llvm/bin/"
+source "$HOME/.cargo/env"
 export PATH
 
 # Other environment variables

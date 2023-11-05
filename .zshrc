@@ -7,10 +7,6 @@ setopt histignorealldups sharehistory extendedglob
 
 # Path modifications
 export ZSH="$HOME/.oh-my-zsh"
-PATH="$PATH:/rivos/llvm/bin/"
-export RUSTUP_HOME=/rivos/rustup
-export CARGO_HOME=/rivos/cargo
-source "$CARGO_HOME/env"
 
 # https://zsh.sourceforge.io/Doc/Release/Parameters.html
 TIMEFMT=$'\n================\nCPU\t%P\nuser\t%*U\nsystem\t%*S\ntotal\t%*E\nmax rss\t%MKB'
