@@ -2,9 +2,6 @@ local builtin = require('telescope.builtin')
 local actions = require('telescope.actions')
 local transform_mod = require('telescope.actions.mt').transform_mod
 
--- TODO for performance
--- https://github.com/nvim-telescope/telescope-fzf-native.nvim
-
 require("telescope").setup {
   defaults = {
     vimgrep_arguments = {
@@ -83,8 +80,17 @@ require("telescope").setup {
     },
   },
   extensions = {
+    fzf = {
+      fuzzy = true,                    -- false will only do exact matching
+      override_generic_sorter = true,  -- override the generic sorter
+      override_file_sorter = true,     -- override the file sorter
+      case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+                                       -- the default case_mode is "smart_case"
+    }
   }
 }
+-- To get fzf loaded and working with telescope, call load_extension (AFTER setup function)
+require('telescope').load_extension('fzf')
 
 -- vim.keymap.set('n', '<leader>ff', function() builtin.find_files({layout_strategy=''}) end, {})
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
