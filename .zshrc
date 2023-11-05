@@ -134,6 +134,7 @@ fi
 
 ####### Compilation flags #######
 # export ARCHFLAGS="-arch x86_64"
+export CPLUS_INCLUDE_PATH='/usr/include/c++/11:/usr/include/x86_64-linux-gnu/c++/11'  # Lets me use clangd lsp on one-off files w/o compile_commands.json 
 
 ####### Personal additions from here on out #######
 
