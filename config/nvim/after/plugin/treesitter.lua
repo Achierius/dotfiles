@@ -1,3 +1,7 @@
+-- Broken after update?
+-- Try :TSUpdate
+-- https://github.com/nvim-treesitter/nvim-treesitter/issues/3092
+
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all" (the five listed parsers should always be installed)
   ensure_installed = { "cpp", "c", "rust", "haskell", "lua", "vim", "vimdoc", "query" },
