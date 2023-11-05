@@ -114,6 +114,14 @@
 
   Plug 'chrisbra/csv.vim'
 
+  " Plugins for colors!
+  Plug 'Marfisc/vorange' " 'vorange', 'voblue' colorschemes
+  Plug 'srcery-colors/srcery-vim' " 'srcery' colorscheme, inspired vorange
+  Plug 'shaunsingh/nord.nvim' " lua-compat 'nord' colorscheme
+  Plug 'folke/tokyonight.nvim' " 'tokyonight', tokyonight-(night|storm|day|moon)
+  Plug 'folke/styler.nvim' " colorschemes per filetype!! only works for tokyonight so far, need to investigate
+  Plug 'flazz/vim-colorschemes' " many many colorschemes
+
   call plug#end()
 
   " Has to come after plugins (at least csv.vim)
