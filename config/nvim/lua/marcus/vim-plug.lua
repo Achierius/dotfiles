@@ -59,6 +59,10 @@ Plug('hrsh7th/cmp-buffer')
 Plug('onsails/lspkind.nvim')
 Plug('L3MON4D3/LuaSnip')
 
+-- Debugger
+Plug('mfussenegger/nvim-dap')
+Plug('theHamsta/nvim-dap-virtual-text')
+
 -- Back to LSP
 Plug('VonHeikemen/lsp-zero.nvim', {branch = 'v2.x'})
 
