@@ -25,13 +25,20 @@ fi
 
 # Add things to PATH
 
-PATH=$PATH:$HOME/.local/bin:$HOME/bin:/rivos/rig/cuda/bin
-PATH=$PATH:$(go env GOPATH)/bin
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
 
-# Remove troublesome entry from path - was slowing down certain folders
-directory_to_remove='/tools/foss/modules/4.7.1/bin'
-PATH=:$PATH:
-PATH=${PATH//:$directory_to_remove:/:}
-PATH=${PATH#:}; PATH=${PATH%:}
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
+# Language-specific binary install paths
+PATH=$PATH:"/usr/local/go/bin"     # Go
+source "$HOME/.ghcup/env"          # Haskell (Cabal, via ghcup)
+export CARGO_HOME="$HOME/.cargo"   # Rust
+source "$HOME/.cargo/env"          # Rust
 
 export PATH
