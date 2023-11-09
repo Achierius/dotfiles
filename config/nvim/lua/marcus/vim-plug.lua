@@ -35,6 +35,9 @@ Plug('famiu/bufdelete.nvim') -- :Bdelete
 Plug('andrewferrier/wrapping.nvim')
 Plug('mbbill/undotree')
 
+-- Terminal
+Plug('Lenovsky/nuake')
+
 -- Specific filetypes
 Plug('ellisonleao/glow.nvim') -- markdown
 Plug('antiagainst/vim-tablegen')
