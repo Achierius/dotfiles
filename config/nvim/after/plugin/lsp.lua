@@ -32,6 +32,7 @@ lsp.ensure_installed({
   'rust_analyzer',
 })
 
+lsp.setup_servers({'lua_ls', 'clangd', 'rust_analyzer'})
 lsp.setup()
 
 local cmp = require('cmp')
