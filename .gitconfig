@@ -1,6 +1,26 @@
 [user]
+	email = marcus@rivosinc.com
 	name = Marcus Plutowski
-	email = achierius@gmail.com
-
 [core]
-  editor = vim -X
+	editor = vim
+	pager = less
+[color]
+	ui = auto
+[rerere]
+	enabled = true
+[alias]
+	please = push --force-with-lease
+	tackon = commit --amend --no-edit
+  find = log --pretty=\"format:%Cgreen%H %Cblue%s\" --name-status --grep
+	stsh = stash --keep-index
+	staash = stash --include-untracked
+	staaash = stash --all
+	qstat = status --short --branch
+	grog = log --graph --abbrev-commit --decorate --all --format=format:\"%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(dim white) - %an%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n %C(white)%s%C(reset)\"
+  tack = commit --amend --no-edit --no-verify
+  fartack = "!f() { git commit --fixup=$1; printf '\\''030' | git -c core.editor=nano rebase -i --autosquash $1~1; }; f"
+	count-lines = "! git log --author=\"$1\" --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf \"added lines: %s, removed lines: %s, total lines: %s\\n\", add, subs, loc }' #"
+	rbc = rebase --continue
+[diff]
+  tool = 
+  colorMoved = zebra
