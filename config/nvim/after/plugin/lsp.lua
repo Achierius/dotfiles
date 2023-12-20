@@ -27,6 +27,7 @@ lsp_config.clangd.setup({})
 lsp_config.rust_analyzer.setup({})
 
 lsp.ensure_installed({
+  'lua_ls',
   'clangd',
   'rust_analyzer',
 })
@@ -74,9 +75,8 @@ cmp.setup {
     ['<C-f>'] = cmp_action.luasnip_jump_forward(),
     ['<C-b>'] = cmp_action.luasnip_jump_backward(),
 
-    -- Just enable supertab lol
-    -- This is mostly because it lets us navigate forward/backward within snippets
-    ['<Tab>'] = cmp_action.luasnip_supertab(),
-    ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
+    -- no more supertab
+    ['<Tab>'] = cmp_action.tab_complete(),
+    ['<S-Tab>'] = cmp_action.select_prev_or_fallback(),
   },
 }
