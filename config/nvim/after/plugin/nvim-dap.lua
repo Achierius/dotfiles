@@ -4,7 +4,7 @@ local dap_widgets = require('dap.ui.widgets')
 dap.adapters.gdb = {
   type = "executable",
   command = "gdb",
-  args = { "-i", "dap" }
+  args = { "-i", "dap"}
 }
 
 local common_c_cpp_config = {
@@ -13,7 +13,10 @@ local common_c_cpp_config = {
     type = "gdb",
     request = "launch",
     program = function()
-      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+      return vim.fn.input('Program: ')
+    end,
+    args = function()
+      return vim.fn.input('Args: ')
     end,
     cwd = "${workspaceFolder}",
   },
