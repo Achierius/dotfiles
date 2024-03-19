@@ -28,6 +28,7 @@ Plug('folke/which-key.nvim')
 Plug('stevearc/aerial.nvim')
 -- Plug('kana/vim-altr') -- TODO setup
 Plug('nvim-telescope/telescope-fzf-native.nvim', {['do'] = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' })
+Plug('christoomey/vim-tmux-navigator')
 
 -- Buffer management
 Plug('tpope/vim-eunuch') -- :Delete, :Move, :Rename
