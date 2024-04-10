@@ -144,7 +144,7 @@ export LC_ALL=en_US.UTF-8
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='nvim'
 else
-  export EDITOR='mvim'
+  export EDITOR='nvim'
 fi
 
 ####### Compilation flags #######
@@ -194,10 +194,10 @@ alias gmake="make"
 
 # LS aliases
 # Maybe change colors someday https://the.exa.website/docs/colour-themes
-alias l='exa --icons'
-alias ll='exa --icons -l'
-alias la='exa --icons -a'
-alias lla='exa --icons -la'
+alias l='eza --icons always'
+alias ll='eza --icons always -l'
+alias la='eza --icons always -a'
+alias lla='eza --icons always -la'
 
 # Git aliases from https://hackernoon.com/lesser-known-git-commands-151a1918a60
 git config --global alias.please 'push --force-with-lease'
