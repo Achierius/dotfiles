@@ -89,6 +89,9 @@ export MODE_CURSOR_SEARCH="#b48ead steady underline" # Nord Aurora purple
 export MODE_CURSOR_VISUAL="$MODE_CURSOR_VICMD steady bar"
 export MODE_CURSOR_VLINE="$MODE_CURSOR_VISUAL #ebcb8b" # Nord Aurora yellow
 
+# Completions for Homebrew
+[[ -d /opt/homebrew/share/zsh/site-functions ]] && fpath+=(/opt/homebrew/share/zsh/site-functions)
+
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
@@ -120,10 +123,8 @@ export ZSH_DISABLE_COMPFIX=1
 export DISABLE_AUTO_UPDATE="true"
 
 source $ZSH/oh-my-zsh.sh
-
-# Sourcing the following (key-bindings, completion) was recc'd by: "apt-cache-show fzf"
-source /usr/share/doc/fzf/examples/key-bindings.zsh 
-source /usr/share/doc/fzf/examples/completion.zsh
+# Do I need to do this?
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 ####### User configuration #######
 
@@ -135,8 +136,9 @@ unsetopt share_history
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8 
 export LANG="$LC_ALL"
-#export LC_CTYPE=en_US.UTF-8
-#export LC_ALL=en_US.UTF-8
+# These are necessary for macOS
+export LC_CTYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -222,3 +224,7 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+#### Added by green-restore install-tools
+autoload -Uz compinit && compinit
+####
