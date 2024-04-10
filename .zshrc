@@ -15,7 +15,7 @@ TIMEFMT=$'\n================\nCPU\t%P\nuser\t%*U\nsystem\t%*S\ntotal\t%*E\nmax r
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="Soliah" #"robbyrussell"
+ZSH_THEME="nord-extended/nord" #"Soliah" #"robbyrussell"
 # debug slowdowns: https://unix.stackexchange.com/questions/397135/change-of-directory-is-very-slow
 # PS4='+[%D{%T.%.}] %N:%i> ' zsh -x
 
