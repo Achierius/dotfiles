@@ -80,22 +80,35 @@ export FZF_BASE=/usr/bin/fzf
 export FZF_DEFAULT_COMMAND='rg --files'
 export FZF_COMPLETION_TRIGGER=';;' # vs. default **
 
+# Prepare env-vars for zsh-vim-mode
+# I don't know if these actually need to be set up ahead of time
+export MODE_CURSOR_VIINS="#ebcb8b blinking bar" # Nord Aurora yellow
+export MODE_CURSOR_REPLACE="$MODE_CURSOR_VIINS #bf616a" # Nord Aurora red
+export MODE_CURSOR_VICMD="#88c0d0 block" # Nord Frost cyan, since it's the default mode it doesn't need attention
+export MODE_CURSOR_SEARCH="#b48ead steady underline" # Nord Aurora purple
+export MODE_CURSOR_VISUAL="$MODE_CURSOR_VICMD steady bar"
+export MODE_CURSOR_VLINE="$MODE_CURSOR_VISUAL #ebcb8b" # Nord Aurora yellow
+
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # https://github.com/unixorn/awesome-zsh-plugins#plugins
-plugins=( git fzf z zsh-syntax-highlighting zsh-autosuggestions )
+plugins=( git fzf z zsh-autosuggestions zsh-syntax-highlighting zsh-vim-mode )
 # Enabled:
 #   - git: obvious
 #   - fzf: completion
 #   - shellfirm: warn when I try to do dumb things
 #   - z: jump around magically, https://github.com/agkozak/zsh-z
-#   - zsh-syntax-highlighting: it just looks nice
 #   - zsh-autosuggestions: autosuggestions based on history; !Still need to configure!
+#   - zsh-syntax-highlighting: it just looks nice
+#   - zsh-vim-mode: obvious
 # Disabled:
 #   - zsh-vi-mode: couldn't get the hang of it, was slowing down startup
+# Ordering:
+#   - https://stackoverflow.com/questions/58187542/how-to-setup-vi-editing-mode-for-zsh
 
 # required for compat b/w zsh-vi-mode and fzf: https://github.com/jeffreytse/zsh-vi-mode/issues/24
+# Do I still need this now that I'm using zsh-vim-mode instead?
 export ZVM_INIT_MODE=sourcing
 
 # Don't "load only from secure directories", just load from everywhere
