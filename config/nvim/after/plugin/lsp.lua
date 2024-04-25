@@ -1,7 +1,32 @@
 require('mason').setup({
   ui = {
     border = 'rounded'
-  }
+  },
+	PATH = 'append',
+})
+
+require('mason-lspconfig').setup({
+  ensure_installed = {'clangd', 'rust_analyzer'},
+  handlers = {
+    function(server_name)
+      require('lspconfig')[server_name].setup({})
+    end,
+
+		clangd = function()
+			require('lspconfig')['clangd'].setup({
+				settings = {
+					clangd = {
+						inlayHints = {
+							enable = true,
+							showParameterNames = true,
+							parameterHintsPrefix = "<- ",
+							otherHintsPrefix = "=> ",
+						}
+					}
+				}
+			})
+		end,
+  },
 })
 
 local lsp = require('lsp-zero').preset({
@@ -21,15 +46,6 @@ lsp.on_attach(function(client, bufnr)
   --  vim.lsp.buf.format({async = false, timeout_ms = 10000})
   --end, opts)
 end)
-
-lsp_config.lua_ls.setup(lsp.nvim_lua_ls()) -- actually install with LspInstall
-lsp_config.clangd.setup({})
-lsp_config.rust_analyzer.setup({})
-
-lsp.ensure_installed({
-  'clangd',
-  'rust_analyzer',
-})
 
 lsp.setup()
 
