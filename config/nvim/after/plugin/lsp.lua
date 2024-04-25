@@ -63,7 +63,7 @@ cmp.setup {
     -- https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources
     {name = 'path'},
     {name = 'nvim_lsp'},
-    {name = 'buffer', keyword_length = 3},
+    -- {name = 'buffer', keyword_length = 3}, -- too spammy
     {name = 'luasnip', keyword_length = 2},
   },
   formatting = {
