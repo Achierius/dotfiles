@@ -51,6 +51,7 @@ Plug('nvim-tree/nvim-web-devicons')
 Plug('neovim/nvim-lspconfig')
 Plug('williamboman/mason.nvim', {['do'] = ':MasonUpdate'})
 Plug('williamboman/mason-lspconfig.nvim')
+Plug('lvimuser/lsp-inlayhints.nvim')
 
 -- Completion
 Plug('hrsh7th/nvim-cmp')
