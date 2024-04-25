@@ -95,4 +95,8 @@ cmp.setup {
     ['<Tab>'] = cmp_action.luasnip_supertab(),
     ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
   },
+  -- found this in the source https://github.com/hrsh7th/nvim-cmp/blob/main/lua/cmp/config/default.lua
+	performance = {
+		max_view_entries = 25,
+  },
 }
