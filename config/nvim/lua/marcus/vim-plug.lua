@@ -23,7 +23,7 @@ Plug('lewis6991/gitsigns.nvim')
 Plug('tpope/vim-fugitive')
 
 -- Navigation
-Plug('nvim-telescope/telescope.nvim', {tag = '0.1.0'})
+Plug('nvim-telescope/telescope.nvim', {tag = '0.1.4'})
 Plug('folke/which-key.nvim')
 Plug('stevearc/aerial.nvim')
 -- Plug('kana/vim-altr') -- TODO setup
