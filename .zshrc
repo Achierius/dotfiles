@@ -121,9 +121,8 @@ export DISABLE_AUTO_UPDATE="true"
 
 source $ZSH/oh-my-zsh.sh
 
-# Sourcing the following (key-bindings, completion) was recc'd by: "apt-cache-show fzf"
-source /usr/share/doc/fzf/examples/key-bindings.zsh 
-source /usr/share/doc/fzf/examples/completion.zsh
+# See /usr/share/doc/fzf/README.Fedora
+source /usr/share/fzf/shell/key-bindings.zsh 
 
 ####### User configuration #######
 
