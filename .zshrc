@@ -2,37 +2,25 @@
 #   zmodload zsh/zprof
 # and then at the end of .zshrc
 #   zprof
-
-# To debug slowdowns: https://unix.stackexchange.com/questions/397135/change-of-directory-is-very-slow
-# PS4='+[%D{%T.%.}] %N:%i> ' zsh -x
+# Can also run `zsh -x` to get timings
+# https://unix.stackexchange.com/questions/397135/change-of-directory-is-very-slow
+# This is related somehow? Maybe I was debugging it idk PS4='+[%D{%T.%.}] %N:%i> '
 
 ###### Core settings ######
-  setopt histignorealldups sharehistory extendedglob
+  # TODO see if there are otehrs I might want https://thevaluable.dev/zsh-install-configure-mouseless/
+  setopt extendedglob flowcontrol
+  setopt histignorealldups sharehistory appendhistory histnostore histignorespace
+  # Autocorrection
+  setopt correct hashlistall
+  # Job control
+  setopt autocontinue
+  unsetopt notify bgnice
 
   # https://zsh.sourceforge.io/Doc/Release/Parameters.html
   TIMEFMT=$'\n================\nCPU\t%P\nuser\t%*U\nsystem\t%*S\ntotal\t%*E\nmax rss\t%MKB'
 
   # FZF - See /usr/share/doc/fzf/README.Fedora
   source /usr/share/fzf/shell/key-bindings.zsh 
-
-  # I don't really know if this is necessary or wise
-  export LANG=en_US.UTF-8 
-  export LANG="$LC_ALL"
-  #export LC_CTYPE=en_US.UTF-8
-  #export LC_ALL=en_US.UTF-8
-
-  # Preferred editor for local and remote sessions
-  if [[ -n $SSH_CONNECTION ]]; then
-    export EDITOR='vim'
-  else
-    export EDITOR='vim'
-  fi
-
-  # TODO should this be in .zprofile?
-  # Map Shift+Space to '_' on graphical environments
-  #xmodmap -e 'keycode 65 = space underscore' # Requires x11-xserver-utils
-  # Map Shift+Space to '_' in the console
-  # TODO # Requires console-data
 
 ####### Make prompt pretty #######
   # Terminal prompt -- got tired of the oh-my-zsh defaults
@@ -53,12 +41,6 @@
   zstyle ':vcs_info:*' enable git
   RPS1=\$vcs_info_msg_0_
   precmd_functions+=( precmd_vcs_info )
-
-####### Compilation flags #######
-  # export ARCHFLAGS="-arch x86_64"
-  # TODO remove this it's probably causing problems
-  # But ig I should make an alias which sets it so I can use it when needed
-  export CPLUS_INCLUDE_PATH='/usr/include/c++/11:/usr/include/x86_64-linux-gnu/c++/11'  # Lets me use clangd lsp on one-off files w/o compile_commands.json 
 
 ####### Aliases #######
   # TODO move these to another file
