@@ -97,9 +97,8 @@
   "  map <C-@> :NERDTreeToggle<CR> " This is how I got vim to do this for <C-Space>
 
   " Fuzzy finding
+  " See /usr/share/doc/fzf/README-VIM.md
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-  "" recc'd by: apt-cache-show fzf
-  source /usr/share/doc/fzf/examples/fzf.vim
 
   " Meson filetype / syntax / indentation
   Plug 'stfl/meson.vim'
