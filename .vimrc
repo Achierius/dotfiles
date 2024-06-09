@@ -148,8 +148,11 @@
   " cup
   autocmd BufNewFile,BufRead *.cup set filetype=cup
 
-  "" 'au' vs. 'u!' ?
+  " 'au' vs. 'u!' ?
   au BufRead,BufNewFile *.mri set filetype=json
+
+  " Nonstandard zsh dotfiles
+  au BufNewFile,BufRead *.aliasrc set filetype=zsh
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Core editor config

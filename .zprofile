@@ -57,11 +57,11 @@
     PATH=$PATH:"/usr/local/go/bin"     # Go
   fi
   if [ -d $HOME/.ghcup ] ; then
-    source "$HOME/.ghcup/env"          # Haskell (Cabal, via ghcup)
+    . "$HOME/.ghcup/env"          # Haskell (Cabal, via ghcup)
   fi
   if [ -d "$HOME/.cargo" ] ; then
     export CARGO_HOME="$HOME/.cargo"   # Rust
-    source "$HOME/.cargo/env"          # Rust
+    . "$HOME/.cargo/env"          # Rust
   fi
 
   export PATH

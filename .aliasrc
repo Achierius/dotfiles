@@ -1,0 +1,24 @@
+##### Renaming core system utilities ######
+  # Maybe change colors someday https://the.exa.website/docs/colour-themes
+  alias ls='eza --icons always'
+  alias l='eza --icons always'
+  alias ll='eza --icons always -l'
+  alias la='eza --icons always -a'
+  alias lla='eza --icons always -la'
+
+  alias cat='bat'
+
+
+###### Git aliases ######
+  # TODO these should probably just live inside my global .gitconfig
+  # Git aliases from https://hackernoon.com/lesser-known-git-commands-151a1918a60
+  # These now live inside my global .gitconfig instead
+
+
+###### Other aliases ######
+  alias tmux="tmux -u"
+  alias -g up='popd'
+  alias gmake="make" # shim for "compatability"
+  # TODO should these be functions?
+  alias git-watch="watch -c -t -n3 git --no-optional-locks -c color.status=always status"
+  alias git-logwatch="watch -c -t -n5 git --no-optional-locks -c color.ui=always log --decorate --oneline"
