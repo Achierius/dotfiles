@@ -20,7 +20,7 @@
   TIMEFMT=$'\n================\nCPU\t%P\nuser\t%*U\nsystem\t%*S\ntotal\t%*E\nmax rss\t%MKB'
 
   # FZF - See /usr/share/doc/fzf/README.Fedora
-  source /usr/share/fzf/shell/key-bindings.zsh 
+  . /usr/share/fzf/shell/key-bindings.zsh 
 
 ####### Make prompt pretty #######
   # Terminal prompt -- got tired of the oh-my-zsh defaults
@@ -42,32 +42,10 @@
   RPS1=\$vcs_info_msg_0_
   precmd_functions+=( precmd_vcs_info )
 
-####### Aliases #######
-  # TODO move these to another file
-  alias ohmyzsh="mate ~/.oh-my-zsh"
-  alias tmux="tmux -u"
-  alias git-watch="watch -c -t -n3 git --no-optional-locks -c color.status=always status"
-  alias git-logwatch="watch -c -t -n5 git --no-optional-locks -c color.ui=always log --decorate --oneline"
-  alias -g up='popd'
-  alias gmake="make"
 
-  # LS aliases
-  # Maybe change colors someday https://the.exa.website/docs/colour-themes
-  alias l='eza --icons always'
-  alias ll='eza --icons always -l'
-  alias la='eza --icons always -a'
-  alias lla='eza --icons always -la'
+####### Other files  #######
+  . ~/.aliasrc
 
-  # Git aliases from https://hackernoon.com/lesser-known-git-commands-151a1918a60
-  git config --global alias.please 'push --force-with-lease'
-  git config --global alias.tackon 'commit --amend --no-edit' # was "commend"
-  git config --global alias.stsh 'stash --keep-index'
-  git config --global alias.staash 'stash --include-untracked'
-  git config --global alias.staaash 'stash --all'
-  git config --global alias.qstat 'status --short --branch' # was "shorty"/"st"
-  git config --global alias.grog 'log --graph --abbrev-commit --decorate --all --format=format:"%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(dim white) - %an%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n %C(white)%s%C(reset)"'
-  git config --global alias.count-lines "! git log --author=\"\$1\" --pretty=tformat: --numstat | awk '{ add += \$1; subs += \$2; loc += \$1 - \$2 } END { printf \"added lines: %s, removed lines: %s, total lines: %s\n\", add, subs, loc }' #"
-  git config --global alias.rbc 'rebase --continue'
 
 ####### Old oh-my-zsh configurations #######
   # Prepare env-vars for the (fzf) zsh plugin
