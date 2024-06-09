@@ -126,9 +126,6 @@ source /usr/share/fzf/shell/key-bindings.zsh
 
 ####### User configuration #######
 
-# Disable global history sharing
-unsetopt share_history
-
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
