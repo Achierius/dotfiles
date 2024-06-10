@@ -43,8 +43,9 @@
   precmd_functions+=( precmd_vcs_info )
 
 
-####### Other files  #######
+####### Other files & extensions #######
   . ~/.aliasrc
+  eval "$(direnv hook zsh)" # Depends on [direnv](https://direnv.net/docs/hook.html)
 
 
 ####### Old oh-my-zsh configurations #######
