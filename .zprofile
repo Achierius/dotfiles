@@ -26,7 +26,7 @@
 ###### Keyboard/Interface Settings ######
   # TODO should this be in .zprofile?
   # Map Shift+Space to '_' on graphical environments
-  xmodmap -e 'keycode 65 = space underscore' # Requires x11-xserver-utils
+  # TODO generalized soln
   # Map Shift+Space to '_' in the console
   # TODO # Requires console-data
 
