@@ -46,6 +46,14 @@
   precmd_functions+=( precmd_vcs_info )
 
 
+###### macOS Specifics ######
+  # Completions for Homebrew
+  [[ -d /opt/homebrew/share/zsh/site-functions ]] && fpath+=(/opt/homebrew/share/zsh/site-functions)
+
+  #### Added by green-restore install-tools
+  autoload -Uz compinit && compinit
+
+
 ####### Other files  #######
   . ~/.aliasrc
 
