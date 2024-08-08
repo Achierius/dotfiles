@@ -6,12 +6,14 @@
   sort = version:refname
 [user]
   name = Marcus Plutowski
-  email = achierius@gmail.com
+  email = marcus_plutowski@apple.com
 [core]
   editor = vim -X
   fsmonitor = true
   untrackedCache = true
   pager = delta -n
+[commit]
+  gpgsign = false
 [alias]
   please = push --force-with-lease
   fixup = "!git log --oneline --decorate @{u}.. | fzf --ansi | awk '{print $1}' | xargs -r git commit --fixup="
@@ -43,3 +45,22 @@
   colorMoved = default #plain ?
 [pager]
   log = less -j4
+[sendemail]
+  transferEncoding = base64
+[filter "lfs"]
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+  clean = git-lfs clean -- %f
+[gpg]
+  format = x509
+  transferEncoding = base64
+[filter "lfs"]
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+  clean = git-lfs clean -- %f
+[gpg]
+  format = x509
+[gpg "x509"]
+  program = /usr/local/bin/ac-sign
