@@ -15,6 +15,20 @@
   # These now live inside my global .gitconfig instead
 
 
+###### Fancier Functions #####
+	# Use ^Z instead of typing fg manually
+	function fg-bg {
+			if [[ $#BUFFER -eq 0 ]]; then
+					BUFFER=fg
+					zle accept-line
+			else
+					zle push-input
+			fi
+	}
+	zle -N fg-bg
+	bindkey '^z' fg-bg
+
+
 ###### Other aliases ######
   alias tmux="tmux -u"
   alias -g up='popd'
