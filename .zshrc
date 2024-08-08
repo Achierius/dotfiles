@@ -99,7 +99,8 @@
   # Color chart: https://www.calmar.ws/vim/256-xterm-24bit-rgb-color-chart.html %F{51}?
   # General prompt code docs: https://zsh.sourceforge.io/Doc/Release/Prompt-Expansion.html
   # I used to use %# to see if I was sudo, don't use it that often
-  export PROMPT='%F{blue}%n%f %F{245}in%f %B%F{blue}%~%f%b %(?.%F{blue}√.%F{yellow}?%?)%f %B%F{red}⁊ᶜ%f%b '
+  # The %n{...%} is probably not necessary now that I've removed the cool c
+  export PROMPT='%F{blue}%n%f %F{245}in%f %B%F{blue}%~%f%b %(?.%F{blue}√.%F{yellow}?%?)%f %B%F{red}%2{⁊c%}%f%b '
 
   # Version control addons
   # https://arjanvandergaag.nl/blog/customize-zsh-prompt-with-vcs-info.html
