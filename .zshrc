@@ -20,7 +20,10 @@
   TIMEFMT=$'\n================\nCPU\t%P\nuser\t%*U\nsystem\t%*S\ntotal\t%*E\nmax rss\t%MKB'
 
   # FZF - See /usr/share/doc/fzf/README.Fedora
-  . /usr/share/fzf/shell/key-bindings.zsh 
+  #. /usr/share/fzf/shell/key-bindings.zsh 
+  # FZF on macOS -- see the install notes when I install it in brew
+  # Also see /opt/homebrew/opt/
+  source <(fzf --zsh)
 
 ####### Make prompt pretty #######
   # Terminal prompt -- got tired of the oh-my-zsh defaults
