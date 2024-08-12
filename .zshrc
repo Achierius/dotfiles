@@ -47,6 +47,11 @@
   precmd_functions+=( precmd_vcs_info )
 
 
+##### Completions #####
+  # tmuxp: at some point need to run
+  # shtab --shell=zsh -u tmuxp.cli.create_parser | sudo tee /usr/local/share/zsh/site-functions/_TMUXP # `pip install shtab --user`
+
+
 ###### macOS Specifics ######
   # Completions for Homebrew
   [[ -d /opt/homebrew/share/zsh/site-functions ]] && fpath+=(/opt/homebrew/share/zsh/site-functions)

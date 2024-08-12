@@ -1,0 +1,29 @@
+session_name: "☛ system-utils"
+start_directory: "/Users/marcusplutowski/"
+windows:
+- window_name: "dotfiles"
+  start_directory: "/Users/marcusplutowski/dotfiles/"
+  layout: main-horizontal
+  panes:
+  - shell_command: nvim
+    focus: 'true'
+  - watch -c -n 1 time git -c color.status=always status -uno
+  - zsh
+  - zsh
+- window_name: "packages"
+  start_directory: "/Users/marcusplutowski/Applications/Builds/"
+  layout: main-vertical
+  panes:
+  - shell_command: zsh
+    focus: 'true'
+  - zsh
+  - zsh
+  - zsh
+- window_name: "btop"
+  layout: main-horizontal
+  panes:
+  - shell_command: btop
+    focus: 'true'
+  - caffeinate -dimu
+  - zsh
+  - zsh
