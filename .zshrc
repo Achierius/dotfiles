@@ -46,6 +46,9 @@
 ####### Other files & extensions #######
   . ~/.aliasrc
   eval "$(direnv hook zsh)" # Depends on [direnv](https://direnv.net/docs/hook.html)
+##### Completions #####
+  # tmuxp: at some point need to run
+  # shtab --shell=zsh -u tmuxp.cli.create_parser | sudo tee /usr/local/share/zsh/site-functions/_TMUXP # `pip install shtab --user`
 
 
 ####### Old oh-my-zsh configurations #######
