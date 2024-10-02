@@ -31,6 +31,10 @@ vim.opt.splitright = true
 vim.opt.splitkeep = "screen"
 
 -- Terminal
-vim.opt.shell = "/usr/bin/zsh"
+if vim.fn.has('macunix') then
+  vim.opt.shell = "/bin/zsh"
+else
+  vim.opt.shell = "/usr/bin/zsh"
+end
 
 -- Folding is handled in nvim-treesitter
