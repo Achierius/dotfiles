@@ -68,5 +68,8 @@
     export CARGO_HOME="$HOME/.cargo"   # Rust
     . "$HOME/.cargo/env"          # Rust
   fi
+  if [ -d "$HOME/Library/Python/3.9/bin" ] ; then
+    PATH=$PATH:"$HOME/Library/Python/3.9/bin" # macOS issue: pip installed binaries aren't on the path by default for whartever reason
+  fi
 
   export PATH
