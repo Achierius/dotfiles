@@ -25,8 +25,7 @@
 					zle push-input
 			fi
 	}
-	zle -N fg-bg
-	bindkey '^z' fg-bg
+  # Bound later as a widget
 
 
 ###### Other aliases ######
@@ -36,3 +35,9 @@
   # TODO should these be functions?
   alias git-watch="watch -c -t -n3 git --no-optional-locks -c color.status=always status"
   alias git-logwatch="watch -c -t -n5 git --no-optional-locks -c color.ui=always log --decorate --oneline"
+  alias snl='sticky-note -l'
+
+
+###### Widgets ######
+	zle -N fg-bg
+	bindkey '^z' fg-bg

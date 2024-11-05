@@ -6,6 +6,16 @@
 # https://unix.stackexchange.com/questions/397135/change-of-directory-is-very-slow
 # This is related somehow? Maybe I was debugging it idk PS4='+[%D{%T.%.}] %N:%i> '
 
+
+###### Autoload setups ######
+  # Autoload looks in FPATH -- defaults to ~/.zsh/functions ?
+  # `zle -N` makes it a widget: necessary for keyboard bindings
+  alias ald='autoload -Uz' # This alias can stay here
+
+  # Fuzzy regex matcher
+  ald zmv
+
+
 ###### Core settings ######
   # TODO see if there are otehrs I might want https://thevaluable.dev/zsh-install-configure-mouseless/
   setopt extendedglob flowcontrol
