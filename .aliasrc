@@ -27,6 +27,15 @@
 	}
   # Bound later as a widget
 
+  tar-compress-dir-pipeview() {
+      if [ -d "$1" ]; then
+          dir=$(basename "$1")
+          tar -cf - "$1" | pv -s $(du -sb "$1" | awk '{print $1}') | gzip > "${dir}.tar.gz"
+      else
+          echo "'$1' is not a directory"
+          return 1
+      fi
+  }
 
 ###### Other aliases ######
   alias tmux="tmux -u"
@@ -36,7 +45,7 @@
   alias git-watch="watch -c -t -n3 git --no-optional-locks -c color.status=always status"
   alias git-logwatch="watch -c -t -n5 git --no-optional-locks -c color.ui=always log --decorate --oneline"
   alias snl='sticky-note -l'
-
+  alias tarc='tar-compress-dir-pipeview'
 
 ###### Widgets ######
 	zle -N fg-bg
