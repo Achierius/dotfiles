@@ -1,0 +1,23 @@
+session_name: WebKit${WS}
+start_directory: "/Users/marcusplutowski/Devel/WebKit/${WS}/OpenSource/"
+windows:
+- window_name: IDE
+  focus: 'true'
+  layout: c833,529x130,0,0{102x130,0,0[102x65,0,0,10,102x32,0,66,14,102x31,0,99,15],426x130,103,0[426x92,103,0,11,426x37,103,93{213x37,103,93,12,212x37,317,93,13}]}
+  options: {}
+  panes:
+  - btop
+  - watch -c -n 1 time git -c color.status=always status -uno
+  - cd ../Internal && watch -c -n 1 time git -c color.status=always status -uno
+  - shell_command: nvim
+    focus: 'true'
+  - zsh
+  - zsh
+- window_name: Aux
+  layout: main-horizontal
+  panes:
+  - shell_command: zsh
+    focus: 'true'
+  - zsh
+  - zsh
+  - zsh
