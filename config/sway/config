@@ -37,9 +37,7 @@ set $wmenu $rofi_cmd -show window
 
 
 
-# Font
-# To list fonts: `pango-list`
-font pango:Inconsolata Nerd Font 12
+# Checkout https://git.sr.ht/~oscarcp/ghostfiles/tree/master/sway_wm
 
 ### Output configuration
 #
@@ -128,6 +126,19 @@ font pango:Inconsolata Nerd Font 12
     bindsym $wmod+Down focus down
     bindsym $wmod+Up focus up
     bindsym $wmod+Right focus right
+
+    # Move your focus around DISPLAYS
+    bindsym Ctrl+$wmod+$left focus output left
+    bindsym Ctrl+$wmod+$down focus output down
+    bindsym Ctrl+$wmod+$up focus output up
+    bindsym Ctrl+$wmod+$right focus output right
+    # Or use $wmod+[up|down|left|right]
+    bindsym Ctrl+$wmod+Left focus output left
+    bindsym Ctrl+$wmod+Down focus output down
+    bindsym Ctrl+$wmod+Up focus output up
+    bindsym Ctrl+$wmod+Right focus output right
+
+    # TODO switch workspaces between two displays
 
     # Move the focused window with the same, but add Shift
     bindsym $wmod+Shift+$left move left
