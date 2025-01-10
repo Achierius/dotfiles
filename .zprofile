@@ -1,3 +1,8 @@
+##### DEBUG ######
+# Does this shit even work man
+# export XKB_LOG_LEVEL=2
+# export XKB_LOG_FILE=$HOME/xkb.log
+
 ###### SSH ######
   # Setup SSH Agent (No systemd :[) # TODO move this to systemd?
   SSH_ENV="$HOME/.ssh/agent-environment"
@@ -26,7 +31,7 @@
 ###### Keyboard/Interface Settings ######
   # TODO should this be in .zprofile?
   # Map Shift+Space to '_' on graphical environments
-  xmodmap -e 'keycode 65 = space underscore' # Requires x11-xserver-utils
+  # xmodmap -e 'keycode 65 = space underscore' # Requires x11-xserver-utils
   # Map Shift+Space to '_' in the console
   # TODO # Requires console-data
 
