@@ -5,6 +5,8 @@
 ####### PATH changes #######
 # If doing so would require logic logic that would slow down startup,
 # do it in .zprofile instead
+  PATH="$HOME/Sys/builds/j-language/bin:$PATH"
+  export PATH
 
 ####### Compilation flags #######
   # export ARCHFLAGS="-arch x86_64"
