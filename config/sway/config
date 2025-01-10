@@ -153,33 +153,50 @@ set $wmenu $rofi_cmd -show window
 #
 # Workspaces:
 #
+    # Define workspaces
+    set $ws1 1 Comms
+    set $ws2 2 Utils
+    set $ws3 3 Devel
+    set $ws4 4 System
+    set $ws5 5 Web:Devel
+    set $ws6 6 Web:Useful
+    set $ws7 7 Web:Browsing
+    set $ws8 8 Video
+    set $ws9 9 Games
+    set $ws0 0 Spare
+
     # Switch to workspace
-    bindsym $wmod+1 workspace number 1
-    bindsym $wmod+2 workspace number 2
-    bindsym $wmod+3 workspace number 3
-    bindsym $wmod+4 workspace number 4
-    bindsym $wmod+5 workspace number 5
-    bindsym $wmod+6 workspace number 6
-    bindsym $wmod+7 workspace number 7
-    bindsym $wmod+8 workspace number 8
-    bindsym $wmod+9 workspace number 9
-    bindsym $wmod+0 workspace number 10
+    bindsym $wmod+1 workspace number $ws1
+    bindsym $wmod+2 workspace number $ws2
+    bindsym $wmod+3 workspace number $ws3
+    bindsym $wmod+4 workspace number $ws4
+    bindsym $wmod+5 workspace number $ws5
+    bindsym $wmod+6 workspace number $ws6
+    bindsym $wmod+7 workspace number $ws7
+    bindsym $wmod+8 workspace number $ws8
+    bindsym $wmod+9 workspace number $ws9
+    bindsym $wmod+0 workspace number $ws0
     # Move focused container to workspace
-    bindsym $wmod+Shift+1 move container to workspace number 1
-    bindsym $wmod+Shift+2 move container to workspace number 2
-    bindsym $wmod+Shift+3 move container to workspace number 3
-    bindsym $wmod+Shift+4 move container to workspace number 4
-    bindsym $wmod+Shift+5 move container to workspace number 5
-    bindsym $wmod+Shift+6 move container to workspace number 6
-    bindsym $wmod+Shift+7 move container to workspace number 7
-    bindsym $wmod+Shift+8 move container to workspace number 8
-    bindsym $wmod+Shift+9 move container to workspace number 9
-    bindsym $wmod+Shift+0 move container to workspace number 10
+    bindsym $wmod+Shift+1 move container to workspace number $ws1
+    bindsym $wmod+Shift+2 move container to workspace number $ws2
+    bindsym $wmod+Shift+3 move container to workspace number $ws3
+    bindsym $wmod+Shift+4 move container to workspace number $ws4
+    bindsym $wmod+Shift+5 move container to workspace number $ws5
+    bindsym $wmod+Shift+6 move container to workspace number $ws6
+    bindsym $wmod+Shift+7 move container to workspace number $ws7
+    bindsym $wmod+Shift+8 move container to workspace number $ws8
+    bindsym $wmod+Shift+9 move container to workspace number $ws9
+    bindsym $wmod+Shift+0 move container to workspace number $ws0
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
-    bindsym $wmod+Ctrl+Shift+Right move workspace to output right
-    bindsym $wmod+Ctrl+Shift+Left move workspace to output left
-    bindsym $wmod+Ctrl+Shift+Up move workspace to output DP-2
+    bindsym Ctrl+$wmod+Shift+Right move workspace to output right
+    bindsym Ctrl+$wmod+Shift+Left move workspace to output left
+    bindsym Ctrl+$wmod+Shift+Up move workspace to output up
+    bindsym Ctrl+$wmod+Shift+Down move workspace to output down
+    bindsym Ctrl+$wmod+Shift+$right move workspace to output right
+    bindsym Ctrl+$wmod+Shift+$left move workspace to output left
+    bindsym Ctrl+$wmod+Shift+$up move workspace to output up
+    bindsym Ctrl+$wmod+Shift+$down move workspace to output down
 # Layout stuff:
 #
     # You can "split" the current object of your focus with
@@ -242,15 +259,62 @@ set $wmenu $rofi_cmd -show window
   bindsym $wmod+r mode "resize"
 
 #
+# Application shortcuts
+#
+  bindsym $amod+f exec firefox
+
+  bindsym $amod+s exec signal
+
+  # Start a terminal
+  bindsym $amod+Return exec $term
+
+#
 # Startup applications & workspace associations
 #
-  # For Wayland-native apps use app_id instead of class
-  exec Signal && sway '[class="Signal"]' move container to workspace 1
-  exec Discord && sway '[class="discord"]' move container to workspace 1
-  exec Obsidian && sway '[class="obsidian"]' move container to workspace 4
   # To set defaults: assign [class="Firefox"] workspace 7
-  assign [class="Signal"] workspace 1
-  assign [class="Discord"] workspace 1
+  assign [class="Signal"] workspace number $ws1
+  assign [class="Discord"] workspace number $ws1
+  assign [class="Spotify"] workspace number $ws2
+  assign [class="steam"] workspace number $ws9
+  assign [app_id="OpenRGB"] workspace number $ws4
+  assign [class="looking-glass-client"] workspace number $ws9
+  assign [class="TeamSpeak 3"] workspace number $ws9
+  assign [class="virt-manager"] workspace number $ws9
+
+
+  workspace number $ws1
+  exec "move workspace to output $output_auxiliary""
+  workspace number $ws2
+  exec "move workspace to output $output_secondary"
+  workspace number $ws3
+  exec "move workspace to output $output_primary; layout default splith"
+  workspace number $ws4
+  exec "move workspace to output $output_secondary; layout default tabbed"
+  workspace number $ws5
+  exec "move workspace to output $output_secondary"
+  workspace number $ws6
+  exec "move workspace to output $output_primary"
+  workspace number $ws7
+  exec "move workspace to output $output_secondary"
+  workspace number $ws8
+  exec "move workspace to output $output_primary"
+  workspace number $ws9
+  exec "move workspace to output $output_primary"
+  workspace number $ws4
+  exec 'foot -D ~/System/'
+  exec 'foot -D ~/System/ btop -T btop'
+  #exec 'steam'
+  exec 'openrgb'
+  exec 'virt-manager'
+  exec 'TeamSpeak 3'
+  exec 'flatpak run org.signal.Signal'
+  exec 'flatpak run com.spotify.Client'
+  exec 'flatpak run md.obsidian.Obsidian', exec "'[class=\\"Obsidian\\"]' focus", exec 'move window to workspace $ws0'
+
+  # For Wayland-native apps use app_id instead of class
+  #exec "flatpak run org.signal.Signal" && sway '[class="Signal"]' move container to workspace $ws1
+  #exec "flatpak run com.discordapp.Discord" && sway '[class="discord"]' move container to workspace 1
+  #exec "flatpak run md.obsidian.Obsidian" && sway '[class="obsidian"]' move container to workspace 4
 
 
 # https://www.reddit.com/r/swaywm/comments/goxsce/dropdown_terminal_for_sway/
