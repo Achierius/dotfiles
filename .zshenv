@@ -17,5 +17,12 @@
 ####### Set other envvars ######
   # Other environment variables
   export LANG=en_US.UTF-8 # set correct code page, very important
-  export DOTFILE_HOME=~/dotfiles
+  if [ -d ~/Sys/dotfiles ]; then
+    export DOTFILE_HOME=~/Sys/dotfiles
+  elif [ -d ~/Sys/dotfiles ]; then
+    export DOTFILE_HOME=~/dotfiles
+  else
+    echo "error: .zshenv: no DOTFILE_HOME found"
+    export DOTFILE_HOME=~/dotfiles
+  fi
   #export MANPATH="/usr/local/man:$MANPATH" # TODO is this necessary?

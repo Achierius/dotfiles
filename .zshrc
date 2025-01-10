@@ -9,12 +9,16 @@
 ###### Core settings ######
   # TODO see if there are otehrs I might want https://thevaluable.dev/zsh-install-configure-mouseless/
   setopt extendedglob flowcontrol
-  setopt histignorealldups sharehistory appendhistory histnostore histignorespace
   # Autocorrection
   setopt correct hashlistall
   # Job control
   setopt autocontinue
   unsetopt notify bgnice
+  # History
+  HISTFILE=~/.zhistory
+  HISTSIZE=10000000
+  SAVEHIST=$HISTSIZE
+  setopt histignorealldups sharehistory appendhistory histnostore histignorespace
 
   # https://zsh.sourceforge.io/Doc/Release/Parameters.html
   TIMEFMT=$'\n================\nCPU\t%P\nuser\t%*U\nsystem\t%*S\ntotal\t%*E\nmax rss\t%MKB'
@@ -46,6 +50,9 @@
 ####### Other files & extensions #######
   . ~/.aliasrc
   eval "$(direnv hook zsh)" # Depends on [direnv](https://direnv.net/docs/hook.html)
+
+  # Per-directory history!!!
+  . $DOTFILE_HOME/submodules/per-directory-history/per-directory-history.zsh
 ##### Completions #####
   # tmuxp: at some point need to run
   # shtab --shell=zsh -u tmuxp.cli.create_parser | sudo tee /usr/local/share/zsh/site-functions/_TMUXP # `pip install shtab --user`

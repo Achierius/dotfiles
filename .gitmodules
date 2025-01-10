@@ -7,3 +7,6 @@
 [submodule "config/rofi/rofi"]
 	path = config/rofi/rofi
 	url = https://github.com/davatorium/rofi.git
+[submodule "submodules/per-directory-history"]
+	path = submodules/per-directory-history
+	url = https://github.com/jimhester/per-directory-history.git
