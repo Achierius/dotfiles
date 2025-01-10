@@ -4,7 +4,7 @@
 cwd=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 files_installed_in_homedir=(".bash_profile" ".bashrc" ".gitconfig" ".tmux.conf" ".vimrc" ".zprofile" ".zshenv" ".zshrc" ".aliasrc")
-dirs_installed_in_config=("nvim" "sway")
+dirs_installed_in_config=("nvim" "sway" "foot" "rofi")
 
 for file in ${files_installed_in_homedir[@]}; do
 	ln -si $cwd/$file ~/$file

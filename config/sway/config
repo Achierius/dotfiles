@@ -4,15 +4,17 @@
 #
 # Read `man 5 sway` for a complete reference.
 
+### Debug
+
 ### Variables
 #
-# Mod4 for logo key. Use Mod1 for Alt.
+# Mod4 for logo key. Mod1 for Alt. Ctrl for Ctrl.
 # Windowing modifier
 set $wmod Mod4 
 # For compat w/ other sway files: e.g. /usr/share/sway/config.d/65-mode-passthrough.conf
 set $mod $wmod
-# Application modifier
-set $amod Mod1
+# Application modifier -- used to be Mod1
+set $amod Ctrl+$wmod
 
 # Home row direction keys, like vim
 set $left h
@@ -31,6 +33,9 @@ set $rofi_cmd rofi         -terminal '$term'
 # executables from PATH.
 # TODO: add window with the next release of rofi-wayland
 set $menu $rofi_cmd -show combi -combi-modes drun#run -modes combi
+set $wmenu $rofi_cmd -show window
+
+
 
 # Font
 # To list fonts: `pango-list`
@@ -77,22 +82,36 @@ output * bg /usr/share/backgrounds/default.png fill
 #       middle_emulation enabled
 #   }
 #
-  # You can get the names of your inputs by running: swaymsg -t get_inputs
-  # Read `man 5 sway-input` for more information about this section.
-  input "type:keyboard" xkb_options caps:swapescape
+    # You can get the names of your inputs by running: swaymsg -t get_inputs
+    # Read `man 5 sway-input` for more information about this section.
+    input "type:keyboard" xkb_options caps:swapescape
+
+### Aesthetics 
+    gaps inner 10
+
+    # Font
+    # To list fonts: `pango-list`
+    font pango:Inconsolata Nerd Font 12
+
+    # TODO try Swaycons https://github.com/allie-wake-up/swaycons
+    # title_window_icon yes
+
+    
 
 ### Key bindings
 #
 # Basics:
 #
-    # Start a terminal
-    bindsym $wmod+Return exec $term
-
     # Kill focused window
     bindsym $wmod+Shift+q kill
 
-    # Start your launcher
+    # Start application launcher
     bindsym $amod+Space exec $menu
+    # Start application launcher IN CASE I BREAK THINGS
+    bindsym Mod1+Space exec $menu
+
+    # Start window switcher
+    bindsym $wmod+Space exec $wmenu
 
     # Drag floating windows by holding down $wmod and left mouse button.
     # Resize them with right mouse button + $wmod.
