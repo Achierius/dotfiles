@@ -55,4 +55,4 @@ vim.keymap.set("n", "N", "Nzz", noremap_s)
 -- Switch between .h and .cpp
 -- TODO setup altr and use that instead
 vim.keymap.set("n", "gA", ':e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>', opts(noremap_s, { desc = "Switch between .h/.cpp" }))
-vim.keymap.set("n", "<leader>a", ':e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>', opts(noremap_s, { desc = "Switch between .h/.cpp" }))
+vim.keymap.set("n", "<leader>a", ':e %:p:s,.hpp$,.X123X,:s,.cpp$,.hpp,:s,.X123X$,.cpp,<CR>', opts(noremap_s, { desc = "Switch between .h/.cpp" }))
