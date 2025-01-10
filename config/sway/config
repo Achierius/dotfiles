@@ -319,9 +319,14 @@ set $wmenu $rofi_cmd -show window
   #exec "flatpak run com.discordapp.Discord" && sway '[class="discord"]' move container to workspace 1
   #exec "flatpak run md.obsidian.Obsidian" && sway '[class="obsidian"]' move container to workspace 4
 
+#
+# General system utilities
+#
+  # TODO make this work
+  # https://www.reddit.com/r/swaywm/comments/goxsce/dropdown_terminal_for_sway/
+  #bindsym $wmod+Grave exec ~/.config/sway/dropdown_terminal.sh
 
-# https://www.reddit.com/r/swaywm/comments/goxsce/dropdown_terminal_for_sway/
-bindsym $wmod+Grave exec dropdown_terminal.sh
+  bindsym $wmod+Shift+s exec grimshot copy area
 
 # Include configs from 3 locations:
 #  - /usr/share/sway/config.d
