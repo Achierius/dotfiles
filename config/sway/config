@@ -326,7 +326,13 @@ set $wmenu $rofi_cmd -show window
   # https://www.reddit.com/r/swaywm/comments/goxsce/dropdown_terminal_for_sway/
   #bindsym $wmod+Grave exec ~/.config/sway/dropdown_terminal.sh
 
+  # Screenshots
+  # TODO move to $amod?
   bindsym $wmod+Shift+s exec grimshot copy area
+
+  # Clipboard history
+  exec wl-paste --watch cliphist store
+  bindsym $amod+v exec cliphist list | rofi -dmenu | cliphist decode | wl-copy
 
 # Include configs from 3 locations:
 #  - /usr/share/sway/config.d
