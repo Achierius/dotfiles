@@ -25,4 +25,6 @@
     echo "error: .zshenv: no DOTFILE_HOME found"
     export DOTFILE_HOME=~/dotfiles
   fi
+  export DOCKER_HOST=unix:///run/user/$(id -u)/podman/podman.sock
   #export MANPATH="/usr/local/man:$MANPATH" # TODO is this necessary?
+. "$HOME/.cargo/env"
