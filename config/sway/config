@@ -312,7 +312,8 @@ set $wmenu $rofi_cmd -show window
   exec 'TeamSpeak 3'
   exec 'flatpak run org.signal.Signal'
   exec 'flatpak run com.spotify.Client'
-  exec 'flatpak run md.obsidian.Obsidian', exec "'[class=\\"Obsidian\\"]' focus", exec 'move window to workspace $ws0'
+  workspace number $ws0
+  exec 'flatpak run md.obsidian.Obsidian', exec "'[class=\\"Obsidian\\"]' focus"
 
   # For Wayland-native apps use app_id instead of class
   #exec "flatpak run org.signal.Signal" && sway '[class="Signal"]' move container to workspace $ws1
