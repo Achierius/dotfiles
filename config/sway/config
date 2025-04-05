@@ -43,7 +43,7 @@ set $wmenu $rofi_cmd -show window
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # Requires: desktop-backgrounds-compat, swaybg
-    output * bg /home/marcus/Pictures/Desktop\ Backgrounds/McDonald-Lake.jpg fill
+    output * bg /home/marcus/Pictures/Desktop\ Backgrounds/current fill
 #
 # Example configuration:
 #

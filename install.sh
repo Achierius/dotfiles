@@ -30,6 +30,12 @@ mkdir -p "$HOME/.config"
 mkdir -p "$HOME/.vim/autoload"
 mkdir -p "$HOME/.local/share"
 mkdir -p "$HOME/.tmux/plugins"
+mkdir -p "$HOME/Pictures/Desktop Backgrounds/"
+
+# Default desktop background
+if [ ! -e "$HOME/Pictures/Desktop Backgrounds/current" ]; then
+  ln -s "$cwd/images/McDonald-Lake.jpg" "$HOME/Pictures/Desktop Backgrounds/current"
+fi
 
 # Special setup for TPM
 if [ ! -e "$HOME/.tmux/plugins/tpm" ]; then
