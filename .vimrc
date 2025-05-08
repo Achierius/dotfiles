@@ -99,7 +99,8 @@
   " Fuzzy finding
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   "" recc'd by: apt-cache-show fzf
-  source /usr/share/doc/fzf/examples/fzf.vim
+  " TODO fix
+  " source /usr/share/doc/fzf/examples/fzf.vim
 
   " Meson filetype / syntax / indentation
   Plug 'stfl/meson.vim'

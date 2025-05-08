@@ -23,7 +23,7 @@ vim.opt.hlsearch = true
 
 -- Colorschemes: should live in own file?
 vim.opt.termguicolors = true
-vim.cmd("colorscheme vorange")
+vim.cmd("colorscheme fluoromachine")
 
 -- Splits
 vim.opt.splitbelow = true

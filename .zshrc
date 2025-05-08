@@ -69,14 +69,14 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
-HIST_STAMPS="mm/dd/yyyy"
+HIST_STAMPS="yyyy-mm-dd"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Prepare env-vars for the (fzf) zsh plugin
 # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/fzf
-export FZF_BASE=/usr/bin/fzf
+export FZF_BASE=/opt/homebrew/bin/fzf
 export FZF_DEFAULT_COMMAND='rg --files'
 export FZF_COMPLETION_TRIGGER=';;' # vs. default **
 
@@ -84,16 +84,16 @@ export FZF_COMPLETION_TRIGGER=';;' # vs. default **
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # https://github.com/unixorn/awesome-zsh-plugins#plugins
-plugins=( git fzf z zsh-syntax-highlighting zsh-autosuggestions )
+plugins=( gitfast fzf z zsh-syntax-highlighting )
 # Enabled:
 #   - git: obvious
 #   - fzf: completion
 #   - shellfirm: warn when I try to do dumb things
 #   - z: jump around magically, https://github.com/agkozak/zsh-z
 #   - zsh-syntax-highlighting: it just looks nice
-#   - zsh-autosuggestions: autosuggestions based on history; !Still need to configure!
 # Disabled:
 #   - zsh-vi-mode: couldn't get the hang of it, was slowing down startup
+#   - zsh-autosuggestions: autosuggestions based on history; !Still need to configure! ; bad behavior after paste
 
 # required for compat b/w zsh-vi-mode and fzf: https://github.com/jeffreytse/zsh-vi-mode/issues/24
 export ZVM_INIT_MODE=sourcing
@@ -108,10 +108,6 @@ export DISABLE_AUTO_UPDATE="true"
 
 source $ZSH/oh-my-zsh.sh
 
-# Sourcing the following (key-bindings, completion) was recc'd by: "apt-cache-show fzf"
-source /usr/share/doc/fzf/examples/key-bindings.zsh 
-source /usr/share/doc/fzf/examples/completion.zsh
-
 ####### User configuration #######
 
 # Disable global history sharing
@@ -121,16 +117,11 @@ unsetopt share_history
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8 
-export LANG="$LC_ALL"
 #export LC_CTYPE=en_US.UTF-8
 #export LC_ALL=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='nvim'
-else
-  export EDITOR='mvim'
-fi
+export EDITOR='nvim'
 
 ####### Compilation flags #######
 # export ARCHFLAGS="-arch x86_64"
@@ -143,7 +134,8 @@ export CPLUS_INCLUDE_PATH='/usr/include/c++/11:/usr/include/x86_64-linux-gnu/c++
 # Color chart: https://www.calmar.ws/vim/256-xterm-24bit-rgb-color-chart.html %F{51}?
 # General prompt code docs: https://zsh.sourceforge.io/Doc/Release/Prompt-Expansion.html
 # I used to use %# to see if I was sudo, don't use it that often
-export PROMPT='%F{blue}%n%f %F{245}in%f %B%F{blue}%~%f%b %(?.%F{blue}√.%F{yellow}?%?)%f %B%F{red}⁊ᶜ%f%b '
+#export PROMPT='%F{blue}%n%f %F{245}in%f %B%F{blue}%~%f%b %(?.%F{blue}√.%F{yellow}?%?)%f %B%F{red}⁊ᶜ%f%b ' # ^c DOESN'T SHOW UP IN TMUX??
+export PROMPT='%F{blue}%n%f %F{245}in%f %B%F{blue}%~%f%b %(?.%F{blue}√.%F{yellow}?%?)%f %B%F{red}⁊c%f%b '
 
 # Version control addons
 # https://arjanvandergaag.nl/blog/customize-zsh-prompt-with-vcs-info.html

@@ -5,7 +5,7 @@
 
 # Add things to PATH
 PATH=$HOME/.local/bin:$HOME/bin:$PATH
-source "$HOME/.cargo/env"
+# where I would add cargo bin if I had it
 export PATH
 
 # Other environment variables

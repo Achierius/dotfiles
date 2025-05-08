@@ -11,6 +11,8 @@ Plug 'srcery-colors/srcery-vim' -- 'srcery' colorscheme, inspired vorange
 Plug 'shaunsingh/nord.nvim' -- lua-compat 'nord' colorscheme
 Plug 'folke/tokyonight.nvim' -- 'tokyonight', tokyonight-(night|storm|day|moon)
 Plug 'folke/styler.nvim' -- colorschemes per filetype!! only works for tokyonight so far, need to investigate
+Plug 'artanikin/vim-synthwave84' -- synthwave84 colorscheme; doesn't work TOO well
+Plug 'maxmx03/fluoromachine.nvim' -- fluoromachine; very customizable! TODO setup https://github.com/maxmx03/fluoromachine.nvim
 Plug 'flazz/vim-colorschemes' -- many many colorschemes
 
 -- Pretty
