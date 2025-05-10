@@ -18,6 +18,7 @@ Plug 'maxmx03/fluoromachine.nvim' -- fluoromachine; very customizable! TODO setu
 -- Pretty
 Plug('nvim-treesitter/nvim-treesitter', {['do'] = ':TSUpdate'}) -- TODO flesh out usage
 Plug('lewis6991/gitsigns.nvim')
+Plug('nvimdev/dashboard-nvim') -- dashboard
 -- Plug('RRethy/vim-illuminate') -- TODO set up
 -- TODO Several https://hackingcpp.com/dev/vim_plugins.html
 
