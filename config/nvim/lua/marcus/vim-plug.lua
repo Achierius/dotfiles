@@ -30,6 +30,7 @@ Plug('stevearc/aerial.nvim')
 Plug('nvim-telescope/telescope-fzf-native.nvim', {['do'] = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' })
 Plug('christoomey/vim-tmux-navigator')
 Plug('ibhagwan/fzf-lua', {branch = 'main'})
+Plug('stevearc/oil.nvim')
 
 -- Buffer management
 Plug('tpope/vim-eunuch') -- :Delete, :Move, :Rename
