@@ -58,6 +58,7 @@ Plug('robitx/gp.nvim')
 -- Hereafter be LSP
 Plug('williamboman/mason.nvim', {['do'] = ':MasonUpdate'})
 Plug('williamboman/mason-lspconfig.nvim')
+Plug('DNLHC/glance.nvim') -- peek at lsp locations instead of going there
 
 --Plug('lvimuser/lsp-inlayhints.nvim')
 --

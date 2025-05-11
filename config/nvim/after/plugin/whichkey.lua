@@ -72,6 +72,12 @@ which_key.add({
     { "[d", desc = "Move to previous diagnostic in this buffer" },
     { "]d", desc = "Move to next diagnostic in this buffer" },
 
+  -- Glance
+    { "sD", desc = "<CMD>Glance definitions<CR>" },
+    { "sr", desc = "<CMD>Glance references<CR>" },
+    { "sY", desc = "<CMD>Glance type_definitions<CR>" },
+    { "sM", desc = "<CMD>Glance implementations<CR>" },
+
   -- Undotree
     { "<F5>", desc = "UndootreeToggle<CR>" },
     { "su", desc = "UndootreeToggle<CR>" },
