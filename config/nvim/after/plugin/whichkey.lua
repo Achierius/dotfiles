@@ -77,7 +77,7 @@ which_key.add({
     { "su", desc = "UndootreeToggle<CR>" },
 
   -- Gitsigns
-    { "sD", desc = ":Gitsigns toggle_word_diff<Cr>" },
+    { "sgd", desc = ":Gitsigns toggle_word_diff<Cr>" },
 
   -- vim-fugitive
     { "<leader>G", desc = "Git" },
