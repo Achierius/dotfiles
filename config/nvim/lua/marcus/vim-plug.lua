@@ -52,28 +52,28 @@ Plug('antiagainst/vim-tablegen')
 Plug('nvim-lualine/lualine.nvim')
 Plug('nvim-tree/nvim-web-devicons')
 
+-- AI
+Plug('robitx/gp.nvim')
+
 -- Hereafter be LSP
-Plug('neovim/nvim-lspconfig')
 Plug('williamboman/mason.nvim', {['do'] = ':MasonUpdate'})
 Plug('williamboman/mason-lspconfig.nvim')
-Plug('lvimuser/lsp-inlayhints.nvim')
 
--- Completion
+--Plug('lvimuser/lsp-inlayhints.nvim')
+--
+---- Completion
+-- Using these because lsp-zero did:
+-- https://github.com/VonHeikemen/lsp-zero.nvim/blob/v2.x/doc/md/lsp.md#you-might-not-need-lsp-zero
 Plug('hrsh7th/nvim-cmp')
 Plug('hrsh7th/cmp-path')
 Plug('hrsh7th/cmp-nvim-lsp')
-Plug('hrsh7th/cmp-buffer')
-Plug('onsails/lspkind.nvim')
+--Plug('hrsh7th/cmp-buffer') -- do I want this?
 Plug('L3MON4D3/LuaSnip')
 
--- AI
-Plug('robitx/gp.nvim')
+Plug('onsails/lspkind.nvim') -- prettier completions, vscode-like icons ig
 
 -- Debugger
 Plug('mfussenegger/nvim-dap')
 Plug('theHamsta/nvim-dap-virtual-text')
-
--- Back to LSP
-Plug('VonHeikemen/lsp-zero.nvim', {branch = 'v2.x'})
 
 vim.call('plug#end')
