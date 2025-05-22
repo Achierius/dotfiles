@@ -1,3 +1,9 @@
+[column]
+  ui = auto
+[branch]
+  sort = -committerdate
+[tag]
+  sort = version:refname
 [user]
 	name = Marcus Plutowski
 	email = achierius@gmail.com
