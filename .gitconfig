@@ -29,4 +29,7 @@
 [merge]
   conflictstyle = zdiff3
 [diff]
-  colorMoved = default
+  algorithm = histogram
+  mnemonicPrefix = true
+  renames = true
+  colorMoved = default #plain ?
