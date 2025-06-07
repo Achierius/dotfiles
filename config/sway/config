@@ -36,7 +36,6 @@ set $menu $rofi_cmd -show combi -combi-modes "drun,run" -modes combi
 set $wmenu $rofi_cmd -show window
 
 
-
 # Checkout https://git.sr.ht/~oscarcp/ghostfiles/tree/master/sway_wm
 
 ### Output configuration
@@ -264,12 +263,19 @@ set $wmenu $rofi_cmd -show window
 #
 # Application shortcuts
 #
-  bindsym $amod+f exec firefox
 
-  bindsym $amod+s exec signal
+  mode "launch" {
+      bindsym s exec swaymsg '[class="Signal"] focus' ; mode "default"
+      bindsym o exec swaymsg '[class="obsidian"] focus' ; mode "default"
+      bindsym m exec swaymsg '[class="Marvin"] focus' ; mode "default"
+      bindsym Return exec swaymsg '[class="Claude"] focus' ; mode "default"
 
-  # Start a terminal
-  bindsym $amod+Return exec $term
+      bindsym t exec $term ; mode "default"
+      bindsym f exec firefox ; mode "default"
+
+      bindsym Escape mode "default"
+  }
+  bindsym $amod+Return mode "launch"
 
 #
 # Startup applications & workspace associations
