@@ -268,6 +268,7 @@ set $wmenu $rofi_cmd -show window
       bindsym s exec swaymsg '[class="Signal"] focus' ; mode "default"
       bindsym o exec swaymsg '[class="obsidian"] focus' ; mode "default"
       bindsym m exec swaymsg '[class="Marvin"] focus' ; mode "default"
+      bindsym b exec swaymsg '[title="btop"] focus' ; mode "default"
       bindsym Return exec swaymsg '[class="Claude"] focus' ; mode "default"
 
       bindsym t exec $term ; mode "default"
@@ -291,6 +292,7 @@ set $wmenu $rofi_cmd -show window
   assign [class="virt-manager"] workspace number $ws2
   assign [class="Marvin"] workspace number $ws4
   assign [class="obsidian"] workspace number $ws4
+  assign [title="btop"] workspace number $ws2
 
   workspace number $ws1
   exec "move workspace to output $output_auxiliary""
@@ -310,9 +312,9 @@ set $wmenu $rofi_cmd -show window
   exec "move workspace to output $output_primary"
   workspace number $ws9
   exec "move workspace to output $output_primary"
-  workspace number $ws4
-  exec 'foot -D ~/System/'
-  exec 'foot -D ~/System/ btop -T btop'
+  workspace number $ws3
+  exec 'foot -D ~/Sys/ tmux'
+  exec 'foot -D ~/Sys/ -T btop -a btop btop'
   #exec 'steam'
   exec 'openrgb'
   exec 'virt-manager'
