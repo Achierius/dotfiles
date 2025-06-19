@@ -289,7 +289,7 @@ set $wmenu $rofi_cmd -show window
   assign [app_id="OpenRGB"] workspace number $ws2
   assign [class="looking-glass-client"] workspace number $ws9
   assign [class="TeamSpeak 3"] workspace number $ws9
-  assign [class="virt-manager"] workspace number $ws2
+  assign [app_id="virt-manager"] workspace number $ws2
   assign [class="Marvin"] workspace number $ws4
   assign [class="obsidian"] workspace number $ws4
   assign [title="btop"] workspace number $ws2
