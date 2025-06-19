@@ -6,7 +6,7 @@ set -euo pipefail
 cwd=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 files_installed_in_homedir=(".bash_profile" ".bashrc" ".gitconfig" ".tmux.conf" ".vimrc" ".zprofile" ".zshenv" ".zshrc" ".aliasrc")
-dirs_installed_in_config=("nvim" "sway" "swaylock" "foot" "rofi" "tmuxp" "nix" "waybar")
+dirs_installed_in_config=("nvim" "sway" "swaylock" "foot" "rofi" "tmuxp" "nix" "waybar" "wireplumber")
 
 install_symlink() {
   src="$1"
