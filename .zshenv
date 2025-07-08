@@ -19,6 +19,10 @@
 # https://zsh.sourceforge.io/Doc/Release/Parameters.html
 TIMEFMT=$'\n================\nCPU\t%P\nuser\t%*U\nsystem\t%*S\ntotal\t%*E\nmax rss\t%MKB'
 
+# Make less give us some headroom on search results
+# also a few other things
+LESS='-iMXj4'
+
 ####### Set other envvars ######
   # Other environment variables
   export LANG=en_US.UTF-8 # set correct code page, very important
