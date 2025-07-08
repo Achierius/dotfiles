@@ -20,11 +20,9 @@
   SAVEHIST=$HISTSIZE
   setopt histignorealldups sharehistory appendhistory histnostore histignorespace
 
-  # https://zsh.sourceforge.io/Doc/Release/Parameters.html
-  TIMEFMT=$'\n================\nCPU\t%P\nuser\t%*U\nsystem\t%*S\ntotal\t%*E\nmax rss\t%MKB'
-
   # FZF - See /usr/share/doc/fzf/README.Fedora
   . /usr/share/fzf/shell/key-bindings.zsh 
+
 
 ####### Make prompt pretty #######
   # Terminal prompt -- got tired of the oh-my-zsh defaults

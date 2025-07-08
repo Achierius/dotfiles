@@ -14,6 +14,11 @@
   # But ig I should make an alias which sets it so I can use it when needed
   export CPLUS_INCLUDE_PATH='/usr/include/c++/11:/usr/include/x86_64-linux-gnu/c++/11'  # Lets me use clangd lsp on one-off files w/o compile_commands.json 
 
+####### Configurations for utilities ######
+
+# https://zsh.sourceforge.io/Doc/Release/Parameters.html
+TIMEFMT=$'\n================\nCPU\t%P\nuser\t%*U\nsystem\t%*S\ntotal\t%*E\nmax rss\t%MKB'
+
 ####### Set other envvars ######
   # Other environment variables
   export LANG=en_US.UTF-8 # set correct code page, very important
@@ -28,3 +33,5 @@
   export DOCKER_HOST=unix:///run/user/$(id -u)/podman/podman.sock
   #export MANPATH="/usr/local/man:$MANPATH" # TODO is this necessary?
 . "$HOME/.cargo/env"
+
+
