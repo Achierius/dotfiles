@@ -33,3 +33,5 @@
   mnemonicPrefix = true
   renames = true
   colorMoved = default #plain ?
+[pager]
+	log = less -j4
