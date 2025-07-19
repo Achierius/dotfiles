@@ -23,6 +23,10 @@ TIMEFMT=$'\n================\nCPU\t%P\nuser\t%*U\nsystem\t%*S\ntotal\t%*E\nmax r
 # also a few other things
 LESS='-iMXj4'
 
+####### Load language environments #####
+  [ -f "$HOME/.ghcup/env" ] && . "$HOME/.ghcup/env" # ghcup-env
+  [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
+
 ####### Set other envvars ######
   # Other environment variables
   export LANG=en_US.UTF-8 # set correct code page, very important
@@ -36,6 +40,3 @@ LESS='-iMXj4'
   fi
   export DOCKER_HOST=unix:///run/user/$(id -u)/podman/podman.sock
   #export MANPATH="/usr/local/man:$MANPATH" # TODO is this necessary?
-. "$HOME/.cargo/env"
-
-

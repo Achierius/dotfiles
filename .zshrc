@@ -123,5 +123,3 @@
   # Keybinds for zsh-autosuggestions
   #bindkey '^ ' autosuggest-accept # Binds to ctrl-space
   #bindkey '^[[Z' autosuggest-accept # Binds to shift-tab
-
-[ -f "/home/marcus/.ghcup/env" ] && . "/home/marcus/.ghcup/env" # ghcup-env
