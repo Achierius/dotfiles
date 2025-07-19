@@ -26,6 +26,7 @@ LESS='-iMXj4'
 ####### Load language environments #####
   [ -f "$HOME/.ghcup/env" ] && . "$HOME/.ghcup/env" # ghcup-env
   [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
+  [ -d /opt/homebrew/share/zsh/site-functions ] && fpath+=(/opt/homebrew/share/zsh/site-functions)
 
 ####### Set other envvars ######
   # Other environment variables
