@@ -30,8 +30,31 @@
   SAVEHIST=$HISTSIZE
   setopt histignorealldups sharehistory appendhistory histnostore histignorespace
 
-  # FZF - See /usr/share/doc/fzf/README.Fedora
-  . /usr/share/fzf/shell/key-bindings.zsh 
+
+###### Load FZF keybinds #####
+  # Load fzf keybinds + completion, with basic cross-platform compatability
+  if command -v brew >/dev/null 2>&1; then
+    # This handles the case where we have Homebrew installed but aren't
+    # using it to package fzf
+    FZF_HOMEBREW_PREFIX="$(brew --prefix fzf 2>/dev/null)"
+    if [ -n "$FZF_HOMEBREW_PREFIX" ] && [ -d "$FZF_HOMEBREW_PREFIX/shell" ]; then
+      FZF_BASE="$FZF_HOMEBREW_PREFIX"
+    fi
+  fi
+  if [ -z "$FZF_BASE" ]; then
+    if [ -d /usr/share/fzf ]; then
+      # See /usr/share/doc/fzf/README.Fedora
+      FZF_BASE="/usr/share/fzf"
+    elif [ -d /usr/share/doc/fzf ]; then
+      # Debian thing?
+      FZF_BASE="/usr/share/doc/fzf"
+    else
+      echo ".zshrc: could not find FZF_BASE, is fzf installed?"
+    fi
+  fi
+  [ -f "$FZF_BASE/shell/key-bindings.zsh" ] && source "$FZF_BASE/shell/key-bindings.zsh"
+  # Often not available but we may as well try (though do I really want it? unclear)
+  [ -f "$FZF_BASE/shell/completion.zsh" ] && source "$FZF_BASE/shell/completion.zsh"
 
 
 ####### Make prompt pretty #######
