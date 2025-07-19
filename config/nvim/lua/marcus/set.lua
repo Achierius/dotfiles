@@ -31,6 +31,7 @@ vim.opt.splitright = true
 vim.opt.splitkeep = "screen"
 
 -- Terminal
-vim.opt.shell = "/usr/bin/zsh"
+local zsh_path = vim.fn.executable("/bin/zsh") == 1 and "/bin/zsh" or "/usr/bin/zsh"
+vim.opt.shell = zsh_path
 
 -- Folding is handled in nvim-treesitter
