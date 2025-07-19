@@ -14,6 +14,7 @@
   pager = delta -n
 [alias]
   please = push --force-with-lease
+  fixup = "!git log --oneline --decorate @{u}.. | fzf --ansi | awk '{print $1}' | xargs -r git commit --fixup="
   tack = commit --amend --no-edit
   amend = commit --amend
   stsh = stash --keep-index
