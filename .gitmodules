@@ -10,3 +10,6 @@
 [submodule "submodules/per-directory-history"]
 	path = submodules/per-directory-history
 	url = https://github.com/jimhester/per-directory-history.git
+[submodule "submodules/fzf-tab"]
+	path = submodules/fzf-tab
+	url = https://github.com/Aloxaf/fzf-tab

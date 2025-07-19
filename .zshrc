@@ -31,6 +31,42 @@
   setopt histignorealldups sharehistory appendhistory histnostore histignorespace
 
 
+##### Completions #####
+  # tmuxp: at some point need to run
+  # shtab --shell=zsh -u tmuxp.cli.create_parser | sudo tee /usr/local/share/zsh/site-functions/_TMUXP # `pip install shtab --user`
+  ald compinit && compinit
+  . $DOTFILE_HOME/submodules/fzf-tab/fzf-tab.plugin.zsh
+  # TODO improve these colors (yoinked from https://www.reddit.com/r/zsh/comments/109rpd5/fzftab_colors_issue/)
+  FZF_COLOR_CONFIG="16,fg:#88c0d0,bg:-1,hl:1,hl+:1,bg+:#5e81ac,fg+:-1:bold:underline,\
+                  prompt:#5e81ac,pointer:#bf616a,gutter:-1,marker:#bf616a,spinner:3,info:3"
+  FZF_BINDING_CONFIG="ctrl-l:accept,ctrl-h:toggle,right:accept,left:toggle"
+  # May as well set normal FZF configuration here as well:
+  export FZF_DEFAULT_OPTS="--color=\"$FZF_COLOR_CONFIG\" --bind=\"$FZF_BINDING_CONFIG\""
+
+  # NOTE: fzf-tab does not follow FZF_DEFAULT_OPTS by default, so if not forced you would have to set stuff here
+  # To make fzf-tab follow FZF_DEFAULT_OPTS you can add `use-fzf-default-opts yes` but that may break things:
+  # see Aloxaf/fzf-tab#455
+  #zstyle ':fzf-tab:*' use-fzf-default-opts yes
+  zstyle ':fzf-tab:*' fzf-flags --color "$FZF_COLOR_CONFIG" --bind "$FZF_BINDING_CONFIG" 
+  # preview directory's content with eza when completing cd
+  zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --icons --color=always $realpath'
+  # If I want to make them use a tmux popup:
+  #zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
+  # Rest are yoinked from https://github.com/Aloxaf/fzf-tab?tab=readme-ov-file
+  # disable sort when completing `git checkout`
+  zstyle ':completion:*:git-checkout:*' sort false
+  # set descriptions format to enable group support
+  # NOTE: don't use escape sequences (like '%F{red}%d%f') here, fzf-tab will ignore them
+  zstyle ':completion:*:descriptions' format '[%d]'
+  # set list-colors to enable filename colorizing
+  #zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+  # force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
+  zstyle ':completion:*' menu no
+  # switch group using `<` and `>`
+  zstyle ':fzf-tab:*' switch-group '<' '>'
+
+  # Remember to run build-fzf-tab-module at some point to install the binary module
+
 ###### Load FZF keybinds #####
   # Load fzf keybinds + completion, with basic cross-platform compatability
   if command -v brew >/dev/null 2>&1; then
@@ -84,9 +120,6 @@
 
   # Per-directory history!!!
   . $DOTFILE_HOME/submodules/per-directory-history/per-directory-history.zsh
-##### Completions #####
-  # tmuxp: at some point need to run
-  # shtab --shell=zsh -u tmuxp.cli.create_parser | sudo tee /usr/local/share/zsh/site-functions/_TMUXP # `pip install shtab --user`
 
 
 ####### Old oh-my-zsh configurations #######
