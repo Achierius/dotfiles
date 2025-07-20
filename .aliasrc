@@ -30,7 +30,7 @@
   tar-compress-dir-pipeview() {
       if [ -d "$1" ]; then
           dir=$(basename "$1")
-          tar -cf - "$1" | pv -s $(du -sb "$1" | awk '{print $1}') | gzip > "${dir}.tar.gz"
+          tar -cf - "$1" | pv -s $(gdu -sb "$1" | awk '{print $1}') | gzip > "${dir}.tar.gz"
       else
           echo "'$1' is not a directory"
           return 1
