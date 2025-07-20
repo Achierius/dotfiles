@@ -22,7 +22,7 @@ install_symlink() {
     echo "warning: $dest is not a symlink!"
   fi
 
-  ln -si "$src" -T "$dest"
+  ln -si "$src" "$dest"
 }
 
 # Create whatever directories we'll need first
