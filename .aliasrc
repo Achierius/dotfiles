@@ -37,6 +37,72 @@
       fi
   }
 
+
+	WK_ROOT="${HOME}/Devel/WebKit"
+	_pad_number() {
+		printf "%02d" "$1"
+	}
+
+	# Switch between OpenSource and Internal in current workspace
+	wkhop() {
+		local dir=$(pwd)
+		if [[ "$dir" =~ "$WK_ROOT/([0-9]{2})/(OpenSource|Internal)" ]]; then
+			local num="${match[1]}"
+			local kind="${match[2]}"
+			local other=$([[ "$kind" == "OpenSource" ]] && echo "Internal" || echo "OpenSource")
+			local target="$WK_ROOT/$num/$other"
+			if [[ -d "$target" ]]; then
+				cd "$target"
+			else
+				echo "Error: Target directory '$target' does not exist." >&2
+			fi
+		else
+			echo "Error: Not in a recognized WebKit workspace (OpenSource or Internal)." >&2
+		fi
+	}
+
+	# Jump to OpenSource directory for workspace N
+	wk() {
+		local num=$(_pad_number "$1")
+		local target="$WK_ROOT/$num/OpenSource"
+		if [[ -d "$target" ]]; then
+			cd "$target"
+		else
+			echo "Error: No such workspace at '$target'" >&2
+		fi
+	}
+
+	# Attach or switch to tmux session named WebKitNN
+	wkt() {
+		local num=$(_pad_number "$1")
+		local session="WebKit$num"
+		if tmux has-session -t "$session" 2>/dev/null; then
+			if [[ -n "$TMUX" ]]; then
+				tmux switch-client -t "$session"
+			else
+				tmux attach-session -t "$session"
+			fi
+		else
+			echo "Error: No tmux session named '$session'" >&2
+		fi
+	}
+
+	# Show commit hash and message line for both OpenSource and Internal
+	wkstat() {
+		local num=$(_pad_number "$1")
+		local kind workspace summary
+		for kind in OpenSource Internal; do
+			workspace="$WK_ROOT/$num/$kind"
+			if [[ -e "$workspace/.git" ]]; then
+				summary=$(git -C "$workspace" show -s --oneline 2>/dev/null)
+				echo "$kind:\t $summary"
+			else
+				echo "$kind: [not a git repo or not found]" >&2
+			fi
+		done
+	}
+
+
 ###### Other aliases ######
   alias tmux="tmux -u"
   alias -g up='popd'
