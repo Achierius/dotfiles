@@ -13,4 +13,4 @@ require('gitsigns').setup({
   update_debounce = 300,
 })
 
-vim.keymap.set("n", "sD", ":Gitsigns toggle_word_diff<Cr>") -- Toggle inline diff
+vim.keymap.set("n", "sgd", ":Gitsigns toggle_word_diff<Cr>") -- Toggle inline diff

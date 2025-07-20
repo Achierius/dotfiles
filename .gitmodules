@@ -1,6 +1,15 @@
 [submodule "fonts"]
-	path = fonts
+	path = submodules/fonts
 	url = https://github.com/powerline/fonts
 [submodule "vim-colorschemes"]
-	path = vim-colorschemes
+	path = submodules/vim-colorschemes
 	url = https://github.com/flazz/vim-colorschemes
+[submodule "config/rofi/rofi"]
+	path = submodules/rofi
+	url = https://github.com/davatorium/rofi.git
+[submodule "submodules/per-directory-history"]
+	path = submodules/per-directory-history
+	url = https://github.com/jimhester/per-directory-history.git
+[submodule "submodules/fzf-tab"]
+	path = submodules/fzf-tab
+	url = https://github.com/Aloxaf/fzf-tab

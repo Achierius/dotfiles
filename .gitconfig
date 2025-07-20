@@ -1,16 +1,45 @@
+[column]
+  ui = auto
+[branch]
+  sort = -committerdate
+[tag]
+  sort = version:refname
 [user]
-	name = Marcus Plutowski
-	email = achierius@gmail.com
-
+  name = Marcus Plutowski
+  email = achierius@gmail.com
 [core]
   editor = vim -X
+  fsmonitor = true
+  untrackedCache = true
+  pager = delta -n
 [alias]
-	please = push --force-with-lease
-	tackon = commit --amend --no-edit
-	stsh = stash --keep-index
-	staash = stash --include-untracked
-	staaash = stash --all
-	qstat = status --short --branch
-	grog = log --graph --abbrev-commit --decorate --all --format=format:\"%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(dim white) - %an%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n %C(white)%s%C(reset)\"
-	count-lines = "! git log --author=\"$1\" --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf \"added lines: %s, removed lines: %s, total lines: %s\\n\", add, subs, loc }' #"
-	rbc = rebase --continue
+  please = push --force-with-lease
+  fixup = "!git log --oneline --decorate @{u}.. | fzf --ansi | awk '{print $1}' | xargs -r git commit --fixup="
+  tack = commit --amend --no-edit
+  amend = commit --amend
+  stsh = stash --keep-index
+  staash = stash --include-untracked
+  staaash = stash --all
+  qstat = status --short --branch
+  grog = log --graph --abbrev-commit --decorate --all --format=format:\"%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(dim white) - %an%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n %C(white)%s%C(reset)\"
+  count-lines = "! git log --author=\"$1\" --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf \"added lines: %s, removed lines: %s, total lines: %s\\n\", add, subs, loc }' #"
+  rbc = rebase --continue
+  rba = rebase --abort
+  cpc = cherry-pick --continue
+  cpa = cherry-pick --abort
+  s = status
+  c = commit
+  co = checkout
+[interactive]
+  diffFilter = delta -n --color-only
+[delta]
+  navigate = true
+[merge]
+  conflictstyle = zdiff3
+[diff]
+  algorithm = histogram
+  mnemonicPrefix = true
+  renames = true
+  colorMoved = default #plain ?
+[pager]
+  log = less -j4

@@ -3,7 +3,11 @@ if not status_ok then
     return
 end
 
-local setup = {
+which_key.setup({
+    preset = "classic",
+    filter = function(mapping)
+        return mapping.desc and mapping.desc ~= ""
+    end,
     plugins = {
         marks = true, -- shows a list of your marks on ' and `
         registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
@@ -23,117 +27,78 @@ local setup = {
             g = true, -- bindings for prefixed with g
         },
     },
-    -- add operators that will trigger motion and text object completion
-    -- to enable all native operators, set the preset / operators plugin above
-    -- operators = { gc = "Comments" },
-    key_labels = {
-        -- override the label used to display some keys. It doesn't effect WK in any other way.
-        -- For example:
-        -- ["<space>"] = "SPC",
-        -- ["<cr>"] = "RET",
-        -- ["<tab>"] = "TAB",
-    },
-    icons = {
-        breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
-        separator = "➜", -- symbol used between a key and it's label
-        group = "+", -- symbol prepended to a group
-    },
-    popup_mappings = {
-        scroll_down = "<c-d>", -- binding to scroll down inside the popup
-        scroll_up = "<c-u>", -- binding to scroll up inside the popup
-    },
-    window = {
-        border = "rounded", -- none, single, double, shadow
-        position = "bottom", -- bottom, top
-        margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
-        padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
-        winblend = 0,
-    },
-    layout = {
-        height = { min = 4, max = 25 }, -- min and max height of the columns
-        width = { min = 20, max = 50 }, -- min and max width of the columns
-        spacing = 3, -- spacing between columns
-        align = "left", -- align columns left, center or right
-    },
-    ignore_missing = true, -- enable this to hide mappings for which you didn't specify a label
-    hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " }, -- hide mapping boilerplate
-    show_help = true, -- show help message on the command line when the popup is visible
-    triggers = "auto", -- automatically setup triggers
-    -- triggers = {"<leader>"} -- or specify a list manually
-    triggers_blacklist = {
-        -- list of mode / prefixes that should never be hooked by WhichKey
-        -- this is mostly relevant for key maps that start with a native binding
-        -- most people should not need to change this
-        i = { "j", "k" },
-        v = { "j", "k" },
-    },
-}
+})
 
-local n_opts = {
-    mode = {"n"},
-    buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-    silent = true, -- use `silent` when creating keymaps
-    noremap = true, -- use `noremap` when creating keymaps
-    nowait = true, -- use `nowait` when creating keymaps
-}
+-- local n_opts = {
+--     mode = {"n"},
+--     buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+--     silent = true, -- use `silent` when creating keymaps
+--     noremap = true, -- use `noremap` when creating keymaps
+--     nowait = true, -- use `nowait` when creating keymaps
+-- }
 
 -- I hate doing this manually and I shouldn't be doing it here but shikataganai
-local leader_n_mappings = {
-    ["g"] = { name = "+goto" },
-    ["s"] = { name = "+show" },
-    ["<leader>f"] = { name = "+find" },
+which_key.add({
+    mode = { "n" },
+    { "g", group = "+goto" },
+    { "s", group = "+show" },
+    { "<leader>f", group = "+find" },
 
-  -- Telescope
-    ["<leader>ff"] = { "Find files" },
-    ["<leader>fb"] = { "Find buffer" },
-    ["<leader>fr"] = { "List lsp references" },
-    ["<leader>fd"] = { "List lsp diagnostics" },
-    ["<leader>rg"] = { "Rip Grep" },
-    ["S"] = { "Rip Grep" },
-    ["<leader>fg"] = { name = "+find git" },
-    ["<leader>fgf"] = { "Find git file" },
-    ["<leader>fgd"] = { "Show git status" },
-    ["<leader>fgs"] = { "Select git stash" },
-    ["<leader>f;"] = { "Resume latest telescope session" },
+  -- fzf-lua
+    { "<leader>ff", desc = "Find files" },
+    { "<leader>fb", desc = "Find buffer" },
+    { "<leader>fr", desc = "List lsp references" },
+    { "<leader>fd", desc = "List lsp diagnostics" },
+    { "<leader>rg", desc = "Rip Grep" },
+    { "S", desc = "Rip Grep" },
+    { "<leader>fg", group = "+find git" },
+    { "<leader>fgf", desc = "Find git file" },
+    { "<leader>fgd", desc = "Show git status" },
+    { "<leader>fgs", desc = "Select git stash" },
+    --{ "<leader>f;", desc = "Resume latest telescope session" },
 
   -- LSP 0
-    ["K"] = { "Show LSP hover info" },
-    ["gd"] = { "Goto definition" },
-    ["gD"] = { "Goto declaration" },
-    ["gi"] = { "Goto implementations" },
-    ["go"] = { "Goto type definition" },
-    ["gr"] = { "Goto references" },
-    ["ss"] = { "Show signature" },
-    ["sd"] = { "Show diagnostics in floating window" },
-    ["<F2>"] = { "Rename all references to cursor'd symbol" },
-    ["<F3>"] = { "Format current buffer" },
-    ["<F4>"] = { "Select code action at cursor" },
-    ["[d"] = { "Move to previous diagnostic in this buffer" },
-    ["]d"] = { "Move to next diagnostic in this buffer" },
+    { "K", desc = "Show LSP hover info" },
+    { "gd", desc = "Goto definition" },
+    { "gD", desc = "Goto declaration" },
+    { "gi", desc = "Goto implementations" },
+    { "go", desc = "Goto type definition" },
+    { "gr", desc = "Goto references" },
+    { "ss", desc = "Show signature" },
+    { "sd", desc = "Show diagnostics in floating window" },
+    { "<F2>", desc = "Rename all references to cursor'd symbol" },
+    { "<F3>", desc = "Format current buffer" },
+    { "<F4>", desc = "Select code action at cursor" },
+    { "[d", desc = "Move to previous diagnostic in this buffer" },
+    { "]d", desc = "Move to next diagnostic in this buffer" },
+
+  -- Glance
+    { "sD", desc = "<CMD>Glance definitions<CR>" },
+    { "sr", desc = "<CMD>Glance references<CR>" },
+    { "sY", desc = "<CMD>Glance type_definitions<CR>" },
+    { "sM", desc = "<CMD>Glance implementations<CR>" },
 
   -- Undotree
-    ["<F5>"] = { "UndootreeToggle<CR>" },
-    ["su"] = { "UndootreeToggle<CR>" },
+    { "<F5>", desc = "UndootreeToggle<CR>" },
+    { "su", desc = "UndootreeToggle<CR>" },
 
   -- Gitsigns
-    ["sD"] = { ":Gitsigns toggle_word_diff<Cr>" },
+    { "sgd", desc = ":Gitsigns toggle_word_diff<Cr>" },
 
   -- vim-fugitive
-    ["<leader>G"] = { "Git" },
+    { "<leader>G", desc = "Git" },
   -- TODO make mappings for common utils?
 
   -- Aerial
-    ["sc"] = { "Toggle code outline" },
-    ["<leader>o"] = { "Toggle code outline" },
-    ["gc"] = { "Goto via code outline" },
+    { "sc", desc = "Toggle code outline" },
+    { "<leader>o", desc = "Toggle code outline" },
+    { "gc", desc = "Goto via code outline" },
 
   -- Misc.
-    ["gA"] = { "Goto alternate hpp/cpp" },
-    ["<leader>a"] = { "Goto alternate hpp/cpp" },
-}
-
-which_key.setup(setup)
-which_key.register(leader_n_mappings, n_opts)
+    { "gA", desc = "Goto alternate hpp/cpp" },
+    { "<leader>a", desc = "Goto alternate hpp/cpp" },
+    { "<leader>w", proxy = "<c-w>", group = "windows" }, -- proxy to window mappings
+})
 
 -- https://github.com/LazyVim/LazyVim/blob/12dacc4d32ad815e8b2c9e19a17744f1d390eaa0/lua/lazyvim/plugins/editor.lua#L126
 -- Why will it not pick up my keys!?!?!?

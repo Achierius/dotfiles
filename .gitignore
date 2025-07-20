@@ -2,3 +2,4 @@
 *.swo
 config/nvim/plugged/
 config/nvim/colors/
+.aider*

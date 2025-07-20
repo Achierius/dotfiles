@@ -1,6 +1,6 @@
 fzf = require('fzf-lua')
 
-fzf.setup({'fzf-tmux'})
+--fzf.setup({'fzf-tmux'})
 
 vim.keymap.set('n', '<leader>fzf', fzf.builtin, {})
 vim.keymap.set('n', '<leader>f;', fzf.resume, {})
