@@ -42,6 +42,7 @@ Plug('famiu/bufdelete.nvim') -- :Bdelete
 -- Text editing
 Plug('andrewferrier/wrapping.nvim')
 Plug('mbbill/undotree')
+Plug('tommcdo/vim-lion')
 
 -- Specific filetypes
 Plug('ellisonleao/glow.nvim') -- markdown

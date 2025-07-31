@@ -16,9 +16,9 @@ vim.lsp.enable({
 -- Beyond the ones I set here, be aware of
 -- https://neovim.io/doc/user/lsp.html#_global-defaults
 
-vim.keymap.set('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>')
+vim.keymap.set('n', 'sd', '<cmd>lua vim.diagnostic.open_float()<cr>')
 vim.keymap.set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>')
-vim.keymap.set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>') 
+vim.keymap.set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>')
 
 vim.api.nvim_create_autocmd('LspAttach', {
   desc = 'LSP actions',
