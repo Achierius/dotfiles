@@ -52,6 +52,9 @@ vim.keymap.set("n", "N", "Nzz", noremap_s)
   vim.keymap.set("v", "J", ":m '>+1<CR>gv==kgvo<esc>=kgvo", { desc = "move highlighted text down" })
   vim.keymap.set("v", "K", ":m '<-2<CR>gv==jgvo<esc>=jgvo", { desc = "move highlighted text up" })
 
+-- Terminal mode: exit using <esc><esc>
+vim.keymap.set("t", "<esc><esc>", "<C-\\><C-n>", { silent = true })
+
 -- Switch between .h and .cpp
 -- TODO setup altr and use that instead
 vim.keymap.set("n", "gA", ':e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>', opts(noremap_s, { desc = "Switch between .h/.cpp" }))
