@@ -1,0 +1,52 @@
+#!/bin/sh
+
+SYS_DIR="$HOME/Sys"
+
+mkdir -p "$SYS_DIR"
+mkdir -p "$SYS_DIR/builds"
+mkdir -p "$HOME/Devel/"
+mkdir -p "$HOME/Documents"
+
+# Default package manager command (can be overridden via env)
+: "${PACKAGE_MANAGER_CMD:=dnf install -y}"
+
+# Package lists
+PKGS_CORE="zsh git git-delta bat eza fzf vim neovim btop tree stow ripgrep rsync tmux fd-find direnv moreutils nnn jq xq yq"
+PKGS_INFRA="restic pass wireguard-tools cockpit vmstat iostat netstat sysstat vnstat lm_sensors"
+PKGS_DESKTOP="flatpak firefox feh ncdu mpv ffmpeg sqlitebrowser wireshark openjdk rofi"
+PKGS_DEVEL="hexedit nasm gcc gcc-c++ uv hotspot speedscope perl make cmake meson valgrind"
+
+# List of packages to install
+PACKAGES="$PKGS_CORE $PKGS_INFRA $PKGS_DEVEL"
+
+# Keep track of failed packages
+FAILED=""
+
+echo "Using package manager: $PACKAGE_MANAGER_CMD"
+echo "Installing packages..."
+
+for pkg in $PACKAGES; do
+    echo "Installing $pkg..."
+    if $PACKAGE_MANAGER_CMD "$pkg"; then
+        echo "✅ $pkg installed successfully"
+    else
+        echo "❌ Failed to install $pkg"
+        FAILED="$FAILED $pkg"
+    fi
+done
+
+if [ -n "$FAILED" ]; then
+    echo
+    echo "The following packages failed to install:"
+    for f in $FAILED; do
+        echo " - $f"
+    done
+    exit 1
+else
+    echo
+    echo "All packages installed successfully!"
+fi
+
+#git clone --recurse-submodules git@github.com:Achierius/scripts.git "$SYS_DIR/"
+git clone --filter=blob:none --sparse git@github.com:ryanoasis/nerd-fonts "$SYS_DIR/nerd-fonts" \
+git clone --recurse-submodules git@github.com:Achierius/dotfiles.git "$SYS_DIR/dotfiles"
