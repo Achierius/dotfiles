@@ -13,7 +13,7 @@ mkdir -p "$HOME/Documents"
 # Package lists
 PKGS_CORE="zsh git git-delta bat eza fzf vim neovim btop tree stow ripgrep rsync tmux fd-find direnv moreutils nnn jq xq yq"
 PKGS_INFRA="restic pass wireguard-tools cockpit vmstat iostat netstat sysstat vnstat lm_sensors"
-PKGS_DESKTOP="flatpak firefox feh ncdu mpv ffmpeg sqlitebrowser wireshark openjdk rofi"
+PKGS_DESKTOP="flatpak firefox feh ncdu mpv ffmpeg sqlitebrowser wireshark openjdk rofi pandoc poppler-utils"
 PKGS_DEVEL="hexedit nasm gcc gcc-c++ uv hotspot speedscope perl make cmake meson valgrind"
 
 # List of packages to install
