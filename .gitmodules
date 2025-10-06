@@ -13,3 +13,6 @@
 [submodule "submodules/fzf-tab"]
 	path = submodules/fzf-tab
 	url = https://github.com/Aloxaf/fzf-tab
+[submodule "submodules/fzf-git"]
+	path = submodules/fzf-git
+	url = https://github.com/junegunn/fzf-git.sh

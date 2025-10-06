@@ -67,6 +67,9 @@
 
   # Remember to run build-fzf-tab-module at some point to install the binary module
 
+  # fzf-git keybinds
+  . $DOTFILE_HOME/submodules/fzf-git/fzf-git.sh
+
 ###### Load FZF keybinds #####
   # Load fzf keybinds + completion, with basic cross-platform compatability
   if command -v brew >/dev/null 2>&1; then
