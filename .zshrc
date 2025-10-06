@@ -119,6 +119,7 @@
   eval "$(direnv hook zsh)" # Depends on [direnv](https://direnv.net/docs/hook.html)
 
   # Per-directory history!!!
+  PER_DIRECTORY_HISTORY_TOGGLE='^[g'
   . $DOTFILE_HOME/submodules/per-directory-history/per-directory-history.zsh
 
 
