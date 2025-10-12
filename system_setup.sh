@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Default package manager command (can be overridden via env)
+: "${PACKAGE_MANAGER_CMD:=sudo dnf install -y}"
+
 SYS_DIR="$HOME/Sys"
 
 mkdir -p "$SYS_DIR"
@@ -7,9 +10,24 @@ mkdir -p "$SYS_DIR/builds"
 mkdir -p "$HOME/Devel/"
 mkdir -p "$HOME/Documents"
 
-# Default package manager command (can be overridden via env)
-: "${PACKAGE_MANAGER_CMD:=sudo dnf install -y}"
+##### First, install languages #####
+# Install ghc if not already installed
+command -v ghc >/dev/null && echo "✅ $(ghc --version)" || {
+  read -r -p "GHC not found. Install via GHCup? [Y/n] " a
+  [[ ${a:-Y} =~ ^[Yy]$ ]] && curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh || echo "Skipped."
+}
+# Install cargo if not already installed
+command -v cargo >/dev/null && echo "✅ $(cargo --version)" || {
+  read -r -p "Cargo not found. Install Rust and Cargo? [Y/n] " a
+  [[ ${a:-Y} =~ ^[Yy]$ ]] && curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh || echo "Skipped."
+}
+# Install OCaml if not already installed
+command -v ocamlc >/dev/null && echo "✅ OCaml $(ocamlc -version)" || {
+  read -r -p "OCaml not found. Install via OPAM? [Y/n] " a
+  [[ ${a:-Y} =~ ^[Yy]$ ]] && curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/ocaml/opam/master/shell/install.sh | sh &&  opam init || echo "Skipped."
+}
 
+##### Then, install dnf packages #####
 # Package lists
 PKGS_CORE="zsh git git-delta bat eza fzf vim neovim btop tree stow ripgrep rsync tmux fd-find direnv moreutils pv nnn jq xq yq jc jo miller gron"
 PKGS_INFRA="restic pass wireguard-tools"
@@ -50,6 +68,8 @@ else
     echo
     echo "All packages installed successfully!"
 fi
+
+##### Finally, ensure core system scripts &c #####
 
 #[ ! -d "$SYS_DIR/scripts" ] && git clone --recurse-submodules git@github.com:Achierius/scripts.git "$SYS_DIR/scripts"
 [ ! -d "$SYS_DIR/nerd-fonts" ] && git clone --filter=blob:none --sparse git@github.com:ryanoasis/nerd-fonts "$SYS_DIR/nerd-fonts"
