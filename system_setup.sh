@@ -26,6 +26,22 @@ command -v ocamlc >/dev/null && echo "✅ OCaml $(ocamlc -version)" || {
   read -r -p "OCaml not found. Install via OPAM? [Y/n] " a
   [[ ${a:-Y} =~ ^[Yy]$ ]] && curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/ocaml/opam/master/shell/install.sh | sh &&  opam init || echo "Skipped."
 }
+# Install go if not already installed
+if command -v go >/dev/null; then
+  echo "✅ $(go version)"
+else
+  read -r -p "Go not found. Install from go.dev tarball? [Y/n] " a
+  if [[ ${a:-Y} =~ ^[Yy]$ ]]; then
+    echo "Visit https://go.dev/dl/ to pick your version (e.g. go1.22.3.linux-amd64.tar.gz)"
+    read -r -p "Enter version filename (just the tarball name): " v
+    curl -LO "https://go.dev/dl/${v}" || { echo "Download failed."; return 1 2>/dev/null || true; }
+    sudo rm -rf /usr/local/go
+    sudo tar -C /usr/local -xzf "${v}"
+    echo "✅ Go installed. Add /usr/local/go/bin to your PATH if not already."
+  else
+    echo "Skipped Go installation."
+  fi
+fi
 
 ##### Then, install dnf packages #####
 # Package lists
