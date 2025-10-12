@@ -43,6 +43,9 @@ else
   fi
 fi
 
+#### For now we just install lang-provided packages here #####
+cargo install atuin
+
 ##### Then, install dnf packages #####
 # Package lists
 PKGS_CORE="zsh git git-delta bat eza fzf vim neovim btop tree stow ripgrep rsync tmux fd-find direnv moreutils pv nnn jq xq yq jc jo miller gron"

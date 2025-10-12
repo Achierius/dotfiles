@@ -121,9 +121,14 @@
   . ~/.aliasrc
   eval "$(direnv hook zsh)" # Depends on [direnv](https://direnv.net/docs/hook.html)
 
-  # Per-directory history!!!
-  PER_DIRECTORY_HISTORY_TOGGLE='^[g'
-  . $DOTFILE_HOME/submodules/per-directory-history/per-directory-history.zsh
+  # By default we go with atuin now, but if that isn't installed can fallback on per-directory-history
+  # Since this overrides a few fzf keybinds it needs to be below the fzf setup
+  # https://docs.atuin.sh/configuration/config/#_top
+  command -v atuin >/dev/null && eval "$(atuin init zsh)" || {
+    # Per-directory history!!!
+    PER_DIRECTORY_HISTORY_TOGGLE='^[g'
+    . $DOTFILE_HOME/submodules/per-directory-history/per-directory-history.zsh
+  }
 
 
 ####### Old oh-my-zsh configurations #######
@@ -160,3 +165,7 @@
   # Keybinds for zsh-autosuggestions
   #bindkey '^ ' autosuggest-accept # Binds to ctrl-space
   #bindkey '^[[Z' autosuggest-accept # Binds to shift-tab
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
