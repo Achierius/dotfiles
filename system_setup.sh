@@ -20,7 +20,7 @@ PKGS_DESKTOP="flatpak firefox feh ncdu mpv ffmpeg sqlitebrowser wireshark openjd
 PKGS_DEVEL="hexedit nasm gcc gcc-c++ uv hotspot speedscope perl make cmake meson valgrind"
 
 # List of packages to install
-PACKAGES="$PKGS_CORE $PKGS_INFRA $PKGS_MONITORING $PKGS_DEBUG $PKGS_DEVEL"
+PACKAGES="$PKGS_CORE $PKGS_INFRA $PKGS_MONITORING $PKGS_DEBUG $PKGS_DEVEL $PKGS_DESKTOP"
 
 # Keep track of failed packages
 FAILED=""
