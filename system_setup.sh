@@ -17,7 +17,7 @@ PKGS_MONITORING="cockpit vmstat iostat netstat sysstat vnstat lm_sensors"
 # Mostly from https://www.brendangregg.com/blog/2024-03-24/linux-crisis-tools.html
 PKGS_DEBUG="procps-ng util-linux sysstat iproute numactl tcpdump kernel-tools perf bcc-tools bpftrace trace-cmd nicstat ethtool tiptop cpuid msr-tools"
 PKGS_DESKTOP="flatpak firefox feh ncdu mpv ffmpeg sqlitebrowser wireshark openjdk rofi pandoc poppler-utils"
-PKGS_DEVEL="hexedit nasm gcc gcc-c++ uv hotspot speedscope perl make cmake meson valgrind"
+PKGS_DEVEL="hexedit hexyl xxd nasm gcc gcc-c++ uv hotspot speedscope perl make cmake meson valgrind hyperfine"
 
 # List of packages to install
 PACKAGES="$PKGS_CORE $PKGS_INFRA $PKGS_MONITORING $PKGS_DEBUG $PKGS_DEVEL $PKGS_DESKTOP"
