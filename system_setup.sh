@@ -50,6 +50,6 @@ else
     echo "All packages installed successfully!"
 fi
 
-#git clone --recurse-submodules git@github.com:Achierius/scripts.git "$SYS_DIR/"
-git clone --filter=blob:none --sparse git@github.com:ryanoasis/nerd-fonts "$SYS_DIR/nerd-fonts" \
-git clone --recurse-submodules git@github.com:Achierius/dotfiles.git "$SYS_DIR/dotfiles"
+#[ ! -d "$SYS_DIR/scripts" ] && git clone --recurse-submodules git@github.com:Achierius/scripts.git "$SYS_DIR/scripts"
+[ ! -d "$SYS_DIR/nerd-fonts" ] && git clone --filter=blob:none --sparse git@github.com:ryanoasis/nerd-fonts "$SYS_DIR/nerd-fonts"
+[ ! -d "$SYS_DIR/dotfiles" ] && git clone --recurse-submodules git@github.com:Achierius/dotfiles.git "$SYS_DIR/dotfiles"
