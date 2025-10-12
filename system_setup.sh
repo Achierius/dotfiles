@@ -11,7 +11,7 @@ mkdir -p "$HOME/Documents"
 : "${PACKAGE_MANAGER_CMD:=dnf install -y}"
 
 # Package lists
-PKGS_CORE="zsh git git-delta bat eza fzf vim neovim btop tree stow ripgrep rsync tmux fd-find direnv moreutils pv nnn jq xq yq jc jo miller"
+PKGS_CORE="zsh git git-delta bat eza fzf vim neovim btop tree stow ripgrep rsync tmux fd-find direnv moreutils pv nnn jq xq yq jc jo miller gron"
 PKGS_INFRA="restic pass wireguard-tools"
 PKGS_MONITORING="cockpit vmstat iostat netstat sysstat vnstat lm_sensors glances lnav"
 # Mostly from https://www.brendangregg.com/blog/2024-03-24/linux-crisis-tools.html
