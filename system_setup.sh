@@ -8,7 +8,7 @@ mkdir -p "$HOME/Devel/"
 mkdir -p "$HOME/Documents"
 
 # Default package manager command (can be overridden via env)
-: "${PACKAGE_MANAGER_CMD:=dnf install -y}"
+: "${PACKAGE_MANAGER_CMD:=sudo dnf install -y}"
 
 # Package lists
 PKGS_CORE="zsh git git-delta bat eza fzf vim neovim btop tree stow ripgrep rsync tmux fd-find direnv moreutils pv nnn jq xq yq jc jo miller gron"
