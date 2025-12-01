@@ -3,12 +3,14 @@ start_directory: "/Users/marcusplutowski/Devel/WebKit/${WS}/OpenSource/"
 windows:
 - window_name: IDE
   focus: 'true'
-  layout: c833,529x130,0,0{102x130,0,0[102x65,0,0,10,102x32,0,66,14,102x31,0,99,15],426x130,103,0[426x92,103,0,11,426x37,103,93{213x37,103,93,12,212x37,317,93,13}]}
+  layout: f023,465x124,0,0{85x124,0,0[85x63,0,0,26,85x30,0,64,27,85x29,0,95,28],379x124,86,0[379x94,86,0,29,379x29,86,95{167x29,86,95,30,211x29,254,95,31}]}
   options: {}
   panes:
   - btop
-  - watch -c -n 1 time git -c color.status=always status -uno
-  - cd ../Internal && watch -c -n 1 time git -c color.status=always status -uno
+  - shell_command: watch -c -n 2 time git -c color.status=always status -uno
+    start_directory: "/Users/marcusplutowski/Devel/WebKit/${WS}/OpenSource/"
+  - shell_command: watch -c -n 3 time git -c color.status=always status -uno
+    start_directory: "/Users/marcusplutowski/Devel/WebKit/${WS}/Internal/"
   - shell_command: nvim
     focus: 'true'
   - zsh
@@ -18,6 +20,7 @@ windows:
   panes:
   - shell_command: zsh
     focus: 'true'
-  - zsh
+  - start_command: zsh
+    start_directory: "/Users/marcusplutowski/Devel/WebKit/${WS}/OpenSource/PerformanceTests/JetStream2/"
   - zsh
   - zsh
