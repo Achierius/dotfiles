@@ -2,7 +2,6 @@ local Plug = vim.fn['plug#']
 
 vim.call('plug#begin', '~/.config/nvim/plugged')
 
-Plug('tpope/vim-sensible') -- Sensible settings
 Plug('nvim-lua/plenary.nvim') -- misc library functions
 
 -- Colorschemes
@@ -26,11 +25,9 @@ Plug('nvimdev/dashboard-nvim') -- dashboard
 Plug('tpope/vim-fugitive')
 
 -- Navigation
-Plug('nvim-telescope/telescope.nvim', {tag = '0.1.4'})
 Plug('folke/which-key.nvim')
 Plug('stevearc/aerial.nvim')
 -- Plug('kana/vim-altr') -- TODO setup
-Plug('nvim-telescope/telescope-fzf-native.nvim', {['do'] = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' })
 Plug('christoomey/vim-tmux-navigator')
 Plug('ibhagwan/fzf-lua', {branch = 'main'})
 Plug('stevearc/oil.nvim')
