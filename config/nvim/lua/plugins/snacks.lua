@@ -7,6 +7,7 @@ return {
       input = { enabled = true },
       scroll = { enabled = false },
       bufdelete = { enabled = true },
+      notifier = { enabled = true },
       dashboard = {
         enabled = true,
         width = 60,
