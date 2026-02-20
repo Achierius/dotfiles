@@ -119,34 +119,6 @@ return {
     end,
   },
 
-  { "nvimdev/dashboard-nvim",
-    event = "VimEnter",
-    config = function()
-      require('dashboard').setup({
-        theme = 'hyper',
-        config = {
-          week_header = {
-            enable = true,
-          },
-          shortcut = {
-            { desc = '󰊳 Update', group = '@property', action = 'Lazy', key = 'u' },
-            {
-              icon = ' ',
-              icon_hl = '@variable',
-              desc = 'Files',
-              group = 'Label',
-              action = 'FzfLua files',
-              key = 'f',
-            },
-          },
-          project = {
-            enable = true,
-            action = 'FzfLua files cwd=',
-          },
-        },
-      })
-    end,
-  },
 
   { "lewis6991/gitsigns.nvim",
     event = "VeryLazy",

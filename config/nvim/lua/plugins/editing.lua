@@ -16,5 +16,4 @@ return {
 
   { "tommcdo/vim-lion", event = "VeryLazy" },
   { "tpope/vim-eunuch", cmd = { "Delete", "Move", "Rename", "Chmod", "Mkdir", "Wall" } },
-  { "famiu/bufdelete.nvim", cmd = { "Bdelete", "Bwipeout" } },
 }
