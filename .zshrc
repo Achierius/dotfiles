@@ -29,6 +29,7 @@
   HISTSIZE=10000000
   SAVEHIST=$HISTSIZE
   setopt histignorealldups sharehistory appendhistory histnostore histignorespace
+  setopt interactive_comments
   # https://zsh.sourceforge.io/Doc/Release/Prompt-Expansion.html
   setopt PROMPT_SUBST
 
