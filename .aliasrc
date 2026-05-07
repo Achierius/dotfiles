@@ -59,7 +59,6 @@
 
 ###### Other aliases ######
   alias tmux="tmux -u"
-  alias -g up='popd'
   alias gmake="make" # shim for "compatability"
   # TODO should these be functions?
   alias git-watch="watch -c -t -n3 git --no-optional-locks -c color.status=always status"
