@@ -16,3 +16,6 @@
 [submodule "submodules/fzf-git"]
 	path = submodules/fzf-git
 	url = https://github.com/junegunn/fzf-git.sh
+[submodule "submodules/zsh-you-should-use"]
+	path = submodules/zsh-you-should-use
+	url = https://github.com/MichaelAquilina/zsh-you-should-use
