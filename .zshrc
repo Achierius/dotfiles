@@ -29,6 +29,8 @@
   HISTSIZE=10000000
   SAVEHIST=$HISTSIZE
   setopt histignorealldups sharehistory appendhistory histnostore histignorespace
+  # https://zsh.sourceforge.io/Doc/Release/Prompt-Expansion.html
+  setopt PROMPT_SUBST
 
 
 ##### Completions #####
@@ -102,7 +104,14 @@
   # Color chart: https://www.calmar.ws/vim/256-xterm-24bit-rgb-color-chart.html %F{51}?
   # General prompt code docs: https://zsh.sourceforge.io/Doc/Release/Prompt-Expansion.html
   # I used to use %# to see if I was sudo, don't use it that often
-  export PROMPT='%F{blue}%n%f %F{245}in%f %B%F{blue}%~%f%b %(?.%F{blue}√.%F{yellow}?%?)%f %B%F{red}⁊ᶜ%f%b '
+  prompt_machine_context() {
+    if (( COLUMNS < 90 )); then
+      print -n -- "%F{blue}${USER[1,1]}%f %F{245}on%f %F{blue}${${HOST%%.*}[1,3]}%f"
+    else
+      print -n -- "%F{blue}%n%f %F{245}on%f %F{blue}%m%f"
+    fi
+  }
+  export PROMPT='$(prompt_machine_context) %F{245}in%f %B%F{blue}%~%f%b %(?.%F{blue}√.%F{yellow}?%?)%f %B%F{red}⁊ᶜ%f%b '
 
   # Version control addons
   # https://arjanvandergaag.nl/blog/customize-zsh-prompt-with-vcs-info.html
