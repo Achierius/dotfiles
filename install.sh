@@ -5,8 +5,13 @@ set -euo pipefail
 # Works as long as the last component is 
 cwd=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
+LOCAL_BIN_PATH="$HOME/.local/bin"
+
 files_installed_in_homedir=(".bash_profile" ".bashrc" ".gitconfig" ".tmux.conf" ".vimrc" ".zprofile" ".zshenv" ".zshrc" ".aliasrc")
 dirs_installed_in_config=("nvim" "atuin" "uv" "sway" "swaylock" "foot" "rofi" "tmuxp" "nix" "waybar" "wireplumber")
+for bin in "$cwd"/bin/*; do
+  [ -e "$bin" ] && bins_installed_in_local_bin+=("$(basename "$bin")")
+done
 
 install_symlink() {
   src="$1"
@@ -29,6 +34,7 @@ install_symlink() {
 mkdir -p "$HOME/.config"
 mkdir -p "$HOME/.vim/autoload"
 mkdir -p "$HOME/.local/share"
+mkdir -p "$LOCAL_BIN_PATH"
 mkdir -p "$HOME/.tmux/plugins"
 mkdir -p "$HOME/Pictures/Desktop Backgrounds/"
 
@@ -52,6 +58,9 @@ for file in ${files_installed_in_homedir[@]}; do
 done
 for dir in ${dirs_installed_in_config[@]}; do
 	install_symlink "$cwd/config/$dir" "$HOME/.config/$dir"
+done
+for bin in ${bins_installed_in_local_bin[@]}; do
+	install_symlink "$cwd/bin/$bin" "$LOCAL_BIN_PATH/$bin"
 done
 
 # Special setup for vim-plug

@@ -48,13 +48,14 @@ cargo install atuin
 
 ##### Then, install dnf packages #####
 # Package lists
-PKGS_CORE="zsh git git-delta bat eza fzf vim neovim btop tree stow ripgrep rsync tmux fd-find direnv moreutils pv nnn jq xq yq jc jo miller gron"
+PKGS_CORE="zsh git git-delta bat eza fzf vim neovim btop tree stow ripgrep rsync tmux fd-find direnv moreutils pv nnn jq xq yq jc jo miller gron notify-send"
 PKGS_INFRA="restic pass wireguard-tools"
 PKGS_MONITORING="cockpit vmstat iostat netstat sysstat vnstat lm_sensors glances lnav duf du-dust"
 # Mostly from https://www.brendangregg.com/blog/2024-03-24/linux-crisis-tools.html
 PKGS_DEBUG="procps-ng util-linux sysstat iproute numactl tcpdump kernel-tools perf bcc-tools bpftrace trace-cmd nicstat ethtool tiptop cpuid msr-tools"
 # For openjdk, can also pin (e.g. java-25-openjdk) but then need to bump periodically: `dnf search openjdk` to find
-PKGS_DESKTOP="flatpak firefox feh ncdu mpv ffmpeg-free sqlitebrowser wireshark java-latest-openjdk rofi-wayland pandoc poppler-utils"
+# grim, slurp, wl-copy are for grimshot
+PKGS_DESKTOP="flatpak firefox feh ncdu mpv ffmpeg-free sqlitebrowser wireshark java-latest-openjdk rofi-wayland pandoc poppler-utils grim slurp wl-copy"
 PKGS_DEVEL="hexedit hexyl xxd nasm gcc gcc-c++ uv hotspot speedscope perl make cmake meson valgrind hyperfine"
 
 # List of packages to install
