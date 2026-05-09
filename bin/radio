@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+# Based on script by EvanHahn, published into the public domain via the [unlicense](https://unlicense.org/)
+# https://codeberg.org/EvanHahn/dotfiles/src/commit/f7a9d94ae2254cb7e5f67e6e5bdb74b6467f6dec/home/bin/bin/radio
+
+set -e
+set -u
+set -o pipefail
+
+if [ "$1" == lofi ]; then
+  url='https://live.hunter.fm/lofi_low'
+elif [ "$1" == classical ]; then
+  # Alternative: Otto's Classical Music, Venice Classic Radio,
+  # WFMT-FM, or something from https://www.yourclassical.org/
+  url='https://stream.srg-ssr.ch/m/rsc_de/aacp_96'
+elif [ "$1" == trance ]; then
+  url='http://ubuntu.hbr1.com:19800/trance.ogg'
+elif [ "$1" == kfai ]; then
+  url='https://kfai.broadcasttool.stream/kfai-1'
+else
+  echo "don't know $1" 1>&2
+  exit 1
+fi
+
+exec mpv --really-quiet "$url"
