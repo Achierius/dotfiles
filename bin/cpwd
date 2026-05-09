@@ -1,0 +1,10 @@
+#!/usr/bin/env zsh
+
+# Based on script by EvanHahn, published into the public domain via the [unlicense](https://unlicense.org/)
+# https://codeberg.org/EvanHahn/dotfiles/src/commit/f7a9d94ae2254cb7e5f67e6e5bdb74b6467f6dec/home/bin/bin/cpwd
+
+set -e
+set -u
+set -o pipefail
+
+pwd | tr -d '\n' | copy

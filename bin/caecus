@@ -1,0 +1,17 @@
+#!/usr/bin/env zsh
+
+# Based on script by EvanHahn, published into the public domain via the [unlicense](https://unlicense.org/)
+# https://codeberg.org/EvanHahn/dotfiles/src/commit/f7a9d94ae2254cb7e5f67e6e5bdb74b6467f6dec/home/bin/bin/bb
+
+set -e
+set -u
+
+if test -t 1; then
+  exec 1>/dev/null
+fi
+
+if test -t 2; then
+  exec 2>/dev/null
+fi
+
+"$@" &

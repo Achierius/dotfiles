@@ -55,7 +55,8 @@ PKGS_MONITORING="cockpit vmstat iostat netstat sysstat vnstat lm_sensors glances
 PKGS_DEBUG="procps-ng util-linux sysstat iproute numactl tcpdump kernel-tools perf bcc-tools bpftrace trace-cmd nicstat ethtool tiptop cpuid msr-tools"
 # For openjdk, can also pin (e.g. java-25-openjdk) but then need to bump periodically: `dnf search openjdk` to find
 # grim, slurp, wl-copy are for grimshot
-PKGS_DESKTOP="flatpak firefox feh ncdu mpv ffmpeg-free sqlitebrowser wireshark java-latest-openjdk rofi-wayland pandoc poppler-utils grim slurp wl-copy"
+# jhead is for bin/stripexif
+PKGS_DESKTOP="flatpak firefox feh ncdu mpv ffmpeg-free sqlitebrowser wireshark java-latest-openjdk rofi-wayland pandoc poppler-utils grim slurp wl-copy jhead"
 PKGS_DEVEL="hexedit hexyl xxd nasm gcc gcc-c++ uv hotspot speedscope perl make cmake meson valgrind hyperfine"
 
 # List of packages to install

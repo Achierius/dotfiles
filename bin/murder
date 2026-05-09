@@ -1,0 +1,128 @@
+#!/usr/bin/env python3
+
+# Based on script by EvanHahn, published into the public domain via the [unlicense](https://unlicense.org/)
+# https://codeberg.org/EvanHahn/dotfiles/src/commit/f7a9d94ae2254cb7e5f67e6e5bdb74b6467f6dec/home/bin/bin/murder
+
+import os
+import subprocess
+import sys
+import time
+
+SIGNALS = [
+    (15, 3),
+    (2, 3),
+    (1, 4),
+    (9, 0),
+]
+
+
+def is_int(arg):
+    try:
+        int(arg)
+        return True
+    except ValueError:
+        return False
+
+
+def running(pid):
+    result = subprocess.run(["ps", "-p", pid], capture_output=True)
+    return len(result.stdout.splitlines()) == 2
+
+
+def go_ahead():
+    return input().strip().lower() in ("y", "yes", "yas")
+
+
+def kill(pid, code):
+    subprocess.run(["kill", f"-{code}", pid])
+
+
+def murder_pid(pid):
+    for code, wait in SIGNALS:
+        if not running(pid):
+            break
+        kill(pid, code)
+        time.sleep(0.5)
+        if running(pid):
+            time.sleep(wait)
+
+
+def murder_names(name):
+    while True:
+        should_loop = False
+
+        result = subprocess.run(
+            ["ps", "-eo", "pid command"],
+            capture_output=True, text=True,
+        )
+        lines = result.stdout.splitlines()
+        for line in lines:
+            if name.lower() not in line.lower():
+                continue
+            parts = line.split(None, 1)
+            if len(parts) < 2:
+                continue
+            pid, fullname = parts
+
+            if int(pid) == os.getpid():
+                continue
+
+            print(f"murder {fullname} (pid {pid})? ", end="", flush=True)
+            if go_ahead():
+                murder_pid(pid)
+                should_loop = True
+                break
+
+        if not should_loop:
+            break
+
+
+def murder_port(arg):
+    while True:
+        should_loop = False
+
+        result = subprocess.run(
+            ["lsof", "-i", arg],
+            capture_output=True, text=True,
+        )
+        lines = result.stdout.splitlines()
+        for line in lines[1:]:
+            pid = line.split(None, 3)[1]
+
+            ps_result = subprocess.run(
+                ["ps", "-eo", "command", pid],
+                capture_output=True, text=True,
+            )
+            fullname = ps_result.stdout.splitlines()[1] if len(ps_result.stdout.splitlines()) > 1 else pid
+
+            print(f"murder {fullname} (pid {pid})? ", end="", flush=True)
+            if go_ahead():
+                murder_pid(pid)
+                should_loop = True
+                break
+
+        if not should_loop:
+            break
+
+
+def murder(arg):
+    is_pid = is_int(arg)
+    is_port = arg.startswith(":") and is_int(arg[1:])
+
+    if is_pid:
+        murder_pid(arg)
+    elif is_port:
+        murder_port(arg)
+    else:
+        murder_names(arg)
+
+
+if len(sys.argv) < 2:
+    print("usage:")
+    print("murder 123    # kill by pid")
+    print("murder ruby   # kill by process name")
+    print("murder :3000  # kill by port")
+    sys.exit(1)
+else:
+    for arg in sys.argv[1:]:
+        murder(arg)
