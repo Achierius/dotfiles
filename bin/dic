@@ -1,0 +1,31 @@
+#!/usr/bin/env zsh
+
+# Based on script by EvanHahn, published into the public domain via the [unlicense](https://unlicense.org/)
+# https://codeberg.org/EvanHahn/dotfiles/src/commit/f7a9d94ae2254cb7e5f67e6e5bdb74b6467f6dec/home/bin/bin/speak
+
+set -e
+set -u
+set -o pipefail
+
+# MacOS
+if hash say 2>/dev/null; then
+	tts=(say)
+# Linux, have piper
+elif hash piper 2>/dev/null; then
+  tts=(python3 -m piper --data-dir "$HOME/.local/share/piper/voices" --length-scale 1.25 --volume 1 -m en_US-arctic-medium)
+# Other
+elif hash espeak-ng 2>/dev/null; then
+  tts=(espeak-ng)
+else
+	>&2 echo "couldn't find any TTS program"
+	exit 2
+fi
+
+if [[ ! -t 0 ]]; then
+	cat
+elif (($#)); then
+	printf '%s\n' "$*"
+else
+	>&2 echo "usage: $0 TEXT...  # or pipe markdown/text into it"
+	exit 1
+fi | pandoc -f commonmark -t plain --wrap=preserve | "${tts[@]}"

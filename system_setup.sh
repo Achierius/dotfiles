@@ -9,6 +9,8 @@ mkdir -p "$SYS_DIR"
 mkdir -p "$SYS_DIR/builds"
 mkdir -p "$HOME/Devel/"
 mkdir -p "$HOME/Documents"
+mkdir -p "$HOME/.local/bin"
+mkdir -p "$HOME/.local/share"
 
 ##### First, install languages #####
 # Install ghc if not already installed
@@ -45,6 +47,10 @@ fi
 
 #### For now we just install lang-provided packages here #####
 cargo install atuin
+python3 -m pip install piper-tts
+# Set up piper datafiles
+mkdir -p "$HOME/.local/share/piper/voices/"
+python3 -m piper.download_voices --download-dir "$HOME/.local/share/piper/voices/" en_US-arctic-medium
 
 ##### Then, install dnf packages #####
 # Package lists
@@ -56,7 +62,8 @@ PKGS_DEBUG="procps-ng util-linux sysstat iproute numactl tcpdump kernel-tools pe
 # For openjdk, can also pin (e.g. java-25-openjdk) but then need to bump periodically: `dnf search openjdk` to find
 # grim, slurp, wl-copy are for grimshot
 # jhead is for bin/stripexif
-PKGS_DESKTOP="flatpak firefox feh ncdu mpv ffmpeg-free sqlitebrowser wireshark java-latest-openjdk rofi-wayland pandoc poppler-utils grim slurp wl-copy jhead"
+# pandoc, ffmpeg are necessary for dic; espeak-ng is a backup
+PKGS_DESKTOP="flatpak firefox feh ncdu mpv ffmpeg-free sqlitebrowser wireshark java-latest-openjdk rofi-wayland pandoc poppler-utils grim slurp wl-copy jhead espeak-ng"
 PKGS_DEVEL="hexedit hexyl xxd nasm gcc gcc-c++ uv hotspot speedscope perl make cmake meson valgrind hyperfine"
 
 # List of packages to install
