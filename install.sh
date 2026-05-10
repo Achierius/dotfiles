@@ -6,6 +6,7 @@ set -euo pipefail
 cwd=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 LOCAL_BIN_PATH="$HOME/.local/bin"
+LOCAL_SFX_PATH="$HOME/.local/share/achierius-sfx"
 
 files_installed_in_homedir=(".bash_profile" ".bashrc" ".gitconfig" ".tmux.conf" ".vimrc" ".zprofile" ".zshenv" ".zshrc" ".aliasrc")
 dirs_installed_in_config=("nvim" "atuin" "uv" "sway" "swaylock" "foot" "rofi" "tmuxp" "nix" "waybar" "wireplumber")
@@ -62,6 +63,7 @@ done
 for bin in ${bins_installed_in_local_bin[@]}; do
 	install_symlink "$cwd/bin/$bin" "$LOCAL_BIN_PATH/$bin"
 done
+install_symlink "$cwd/resources/sfx" "$LOCAL_SFX_PATH"
 
 # Special setup for vim-plug
 if [ ! -e "$HOME/.vim/autoload/plug.vim" ]; then

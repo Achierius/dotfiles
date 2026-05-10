@@ -63,7 +63,7 @@ PKGS_DEBUG="procps-ng util-linux sysstat iproute numactl tcpdump kernel-tools pe
 # grim, slurp, wl-copy are for grimshot
 # jhead is for bin/stripexif
 # pandoc, ffmpeg are necessary for dic; espeak-ng is a backup
-PKGS_DESKTOP="flatpak firefox feh ncdu mpv ffmpeg-free sqlitebrowser wireshark java-latest-openjdk rofi-wayland pandoc poppler-utils grim slurp wl-copy jhead espeak-ng"
+PKGS_DESKTOP="flatpak firefox feh ncdu mpv ffmpeg-free sqlitebrowser wireshark java-latest-openjdk rofi-wayland pandoc poppler-utils grim slurp wl-copy jhead espeak-ng mpv"
 PKGS_DEVEL="hexedit hexyl xxd nasm gcc gcc-c++ uv hotspot speedscope perl make cmake meson valgrind hyperfine"
 
 # List of packages to install

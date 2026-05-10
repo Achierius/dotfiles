@@ -67,6 +67,26 @@
     fi
   }
 
+  bop () {
+    local last="$?"
+    if [[ "$last" == '0' ]]; then
+      sfx page
+    else
+      sfx bad_bell_ding
+    fi
+    $(exit "$last")
+  }
+
+  boop () {
+    local last="$?"
+    if [[ "$last" == '0' ]]; then
+      sfx goodbells 
+    else
+      sfx badbells
+    fi
+    $(exit "$last")
+  }
+
 ###### Other aliases ######
   alias tmux="tmux -u"
   alias gmake="make" # shim for "compatability"

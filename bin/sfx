@@ -1,0 +1,38 @@
+#!/usr/bin/env zsh
+
+# Inspired by EvanHahn's script, published into the public domain via the [unlicense](https://unlicense.org/)
+# https://codeberg.org/EvanHahn/dotfiles/src/commit/f7a9d94ae2254cb7e5f67e6e5bdb74b6467f6dec/home/bin/bin/sfx
+
+set -euo pipefail
+
+LOCAL_SFX_PATH="$HOME/.local/share/achierius-sfx"
+MPV_CMD=(mpv --no-config --no-video --really-quiet)
+
+(( $# )) || { echo "usage: $0 NAME" >&2; exit 1; }
+
+case "$1" in
+    badbells)
+        "${MPV_CMD[@]}" --start=1 --end=6.5 \
+            --af='lavfi=[afade=t=out:st=3:d=3.5]' \
+            "$LOCAL_SFX_PATH/church_bells_french_alps.wav"
+        ;;
+    goodbells)
+        "${MPV_CMD[@]}" --start=0 --end=+5.0 \
+            --af='lavfi=[afade=t=out:st=2:d=2.78]' \
+            "$LOCAL_SFX_PATH/wedding_bells.mp3"
+        ;;
+    twobell)
+        "${MPV_CMD[@]}" "$LOCAL_SFX_PATH/church_bell_2x.ogg"
+        ;;
+    page)
+        "${MPV_CMD[@]}" "$LOCAL_SFX_PATH/flip_page.ogg"
+        ;;
+    *)
+        matches=( "$LOCAL_SFX_PATH/$1".*(N) )
+        if (( ${#matches} == 0 )); then
+            echo "sfx: no sound matching '$1.*' in $LOCAL_SFX_PATH" >&2
+            exit 1
+        fi
+        "${MPV_CMD[@]}" "${matches[1]}"
+        ;;
+esac
