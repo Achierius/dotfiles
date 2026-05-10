@@ -40,7 +40,7 @@ mkdir -p "$HOME/Pictures/Desktop Backgrounds/"
 
 # Default desktop background
 if [ ! -e "$HOME/Pictures/Desktop Backgrounds/current" ]; then
-  ln -s "$cwd/images/McDonald-Lake.jpg" "$HOME/Pictures/Desktop Backgrounds/current"
+  ln -s "$cwd/resources/images/McDonald-Lake.jpg" "$HOME/Pictures/Desktop Backgrounds/current"
 fi
 
 # Special setup for TPM

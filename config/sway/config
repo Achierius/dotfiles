@@ -42,7 +42,7 @@ set $wmenu $rofi_cmd -show window
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # Requires: desktop-backgrounds-compat, swaybg
-    output * bg /home/marcus/Pictures/Desktop\ Backgrounds/current fill
+    output * bg ~/Pictures/Desktop\ Backgrounds/current fill
 #
 # Example configuration:
 #
