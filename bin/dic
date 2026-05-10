@@ -28,4 +28,5 @@ elif (($#)); then
 else
 	>&2 echo "usage: $0 TEXT...  # or pipe markdown/text into it"
 	exit 1
-fi | pandoc -f commonmark -t plain --wrap=preserve | "${tts[@]}"
+
+fi | pandoc -f commonmark -t plain --wrap=preserve | "${tts[@]}" 2> /dev/null
