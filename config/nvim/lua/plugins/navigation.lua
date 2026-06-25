@@ -1,26 +1,5 @@
 return {
-  { "ibhagwan/fzf-lua",
-    branch = "main",
-    keys = {
-      { "<leader>fzf", function() require('fzf-lua').builtin() end, desc = "FzfLua builtins" },
-      { "<leader>f;", function() require('fzf-lua').resume() end, desc = "FzfLua resume" },
-      { "<leader>ff", function() require('fzf-lua').files() end, desc = "Find files" },
-      { "<leader>fb", function() require('fzf-lua').buffers() end, desc = "Find buffer" },
-      { "<leader>fr", function() require('fzf-lua').lsp_references() end, desc = "List lsp references" },
-      { "<leader>fs", function() require('fzf-lua').lsp_document_symbols() end, desc = "LSP document symbols" },
-      { "<leader>fS", function() require('fzf-lua').lsp_workspace_symbols() end, desc = "LSP workspace symbols" },
-      { "<leader>fd", function() require('fzf-lua').lsp_document_diagnostics() end, desc = "List lsp diagnostics" },
-      { "<leader>fD", function() require('fzf-lua').lsp_workspace_diagnostics() end, desc = "LSP workspace diagnostics" },
-      { "<leader>rg", function() require('fzf-lua').live_grep_native() end, desc = "Rip Grep" },
-      { "S", function() require('fzf-lua').live_grep_native() end, desc = "Rip Grep" },
-      { "<leader>fgc", function() require('fzf-lua').git_commits() end, desc = "Git commits" },
-      { "<leader>fgb", function() require('fzf-lua').git_branches() end, desc = "Git branches" },
-      { "<leader>fgf", function() require('fzf-lua').git_files() end, desc = "Find git file" },
-      { "<leader>fgs", function() require('fzf-lua').git_status() end, desc = "Git status" },
-      { "<leader>fgS", function() require('fzf-lua').git_stash() end, desc = "Git stash" },
-    },
-    cmd = "FzfLua",
-  },
+  -- Picker keybindings are defined in snacks.lua
 
   { "folke/which-key.nvim",
     event = "VeryLazy",
