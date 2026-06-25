@@ -71,7 +71,9 @@ set $wmenu $rofi_cmd -show window
 #
     # You can get the names of your inputs by running: swaymsg -t get_inputs
     # Read `man 5 sway-input` for more information about this section.
-    input "type:keyboard" xkb_options caps:swapescape
+    input * {
+        xkb_options caps:swapescape
+    }
 
 ### Aesthetics 
     gaps inner 10
@@ -326,6 +328,7 @@ set $wmenu $rofi_cmd -show window
   exec 'gio launch ~/.local/share/applications/appimagekit_3d85219fc56d384946e26630ad34cd2a-Marvin.desktop'
   exec 'flatpak run md.obsidian.Obsidian', exec "'[class=\\"Obsidian\\"]' focus"
 
+  exec_always ibus start --type wayland
   # For Wayland-native apps use app_id instead of class
   #exec "flatpak run org.signal.Signal" && sway '[class="Signal"]' move container to workspace $ws1
   #exec "flatpak run com.discordapp.Discord" && sway '[class="discord"]' move container to workspace 1
