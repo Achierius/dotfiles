@@ -79,6 +79,12 @@ return {
         -- vim-fugitive
         { "<leader>G", desc = "Git" },
 
+        -- neominimap (minimap)
+        { "<leader>m", group = "+minimap" },
+        { "<leader>mm", desc = "Toggle minimap" },
+        { "<leader>mf", desc = "Focus minimap" },
+        { "<leader>mr", desc = "Refresh minimap" },
+
         -- Aerial
         { "sc", desc = "Toggle code outline" },
         { "<leader>o", desc = "Toggle code outline" },

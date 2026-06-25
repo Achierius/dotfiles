@@ -141,4 +141,32 @@ return {
       vim.keymap.set("n", "sgd", ":Gitsigns toggle_word_diff<Cr>")
     end,
   },
+
+  { "Isrothy/neominimap.nvim",
+    version = "v3.x.x",
+    cmd = "Neominimap",
+    keys = {
+      { "<leader>mm", "<cmd>Neominimap Toggle<cr>", desc = "Toggle minimap" },
+      { "<leader>mf", "<cmd>Neominimap ToggleFocus<cr>", desc = "Focus minimap" },
+      { "<leader>mr", "<cmd>Neominimap Refresh<cr>", desc = "Refresh minimap" },
+    },
+    init = function()
+      -- Config must be set before the plugin loads (it reads vim.g.neominimap
+      -- rather than exposing a setup() function).
+      vim.g.neominimap = {
+        auto_enable = false,          -- toggle on demand via <leader>mm
+        layout = "float",             -- a minimap float attached to each window
+        float = {
+          minimap_width = 24,
+        },
+        x_multiplier = 4,
+        -- Integrations read from plugins already in this config.
+        treesitter = { enabled = true },   -- syntax-coloured dots
+        diagnostic = { enabled = true },   -- LSP errors/warnings
+        git = { enabled = true },          -- gitsigns hunks
+        search = { enabled = true },       -- search hits (off by default upstream)
+        mark = { enabled = false },
+      }
+    end,
+  },
 }
