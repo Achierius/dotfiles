@@ -286,7 +286,7 @@ set $wmenu $rofi_cmd -show window
   # To set defaults: assign [class="Firefox"] workspace 7
   assign [class="Signal"] workspace number $ws1
   assign [class="Discord"] workspace number $ws1
-  assign [class="Spotify"] workspace number $ws2
+  assign [class="Spotify"] workspace number $ws8
   assign [class="steam"] workspace number $ws9
   assign [app_id="OpenRGB"] workspace number $ws2
   assign [class="looking-glass-client"] workspace number $ws9
