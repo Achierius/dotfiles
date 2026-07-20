@@ -296,6 +296,12 @@ set $wmenu $rofi_cmd -show window
   assign [class="obsidian"] workspace number $ws4
   assign [title="btop"] workspace number $ws2
 
+  # Firefox video/audio windows -> Video workspace. Uses for_window (not assign)
+  # because the match is title-based: the title isn't set when the window first
+  # maps, but for_window re-fires on title changes. Title values are PCRE regex,
+  # so ^(...) anchors "starts with" and \[ is a literal bracket.
+  for_window [app_id="org.mozilla.firefox" title="^(\[Videos|[Audible|Audible Cloud Player)"] move container to workspace number $ws8
+
   workspace number $ws1
   exec "move workspace to output $output_auxiliary""
   workspace number $ws2
