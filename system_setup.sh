@@ -1,7 +1,10 @@
-#!/bin/sh
+#!/bin/bash
 
 # Default package manager command (can be overridden via env)
 : "${PACKAGE_MANAGER_CMD:=sudo dnf install -y}"
+
+# Works as long as the last component is ???
+cwd=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 SYS_DIR="$HOME/Sys"
 
@@ -55,7 +58,7 @@ python3 -m piper.download_voices --download-dir "$HOME/.local/share/piper/voices
 ##### Then, install dnf packages #####
 # Package lists
 PKGS_CORE="zsh git git-delta bat eza fzf vim neovim btop tree stow ripgrep rsync tmux fd-find direnv moreutils pv nnn jq xq yq jc jo miller gron notify-send"
-PKGS_INFRA="restic pass wireguard-tools"
+PKGS_INFRA="restic pass wireguard-tools dnf-automatic"
 PKGS_MONITORING="cockpit vmstat iostat netstat sysstat vnstat lm_sensors glances lnav duf du-dust"
 # Mostly from https://www.brendangregg.com/blog/2024-03-24/linux-crisis-tools.html
 PKGS_DEBUG="procps-ng util-linux sysstat iproute numactl tcpdump kernel-tools perf bcc-tools bpftrace trace-cmd nicstat ethtool tiptop cpuid msr-tools"
@@ -91,14 +94,37 @@ if [ -n "$FAILED" ]; then
     for f in $FAILED; do
         echo " - $f"
     done
-    exit 1
 else
     echo
     echo "All packages installed successfully!"
 fi
 
-##### Finally, ensure core system scripts &c #####
+##### Ensure core system scripts &c #####
 
 #[ ! -d "$SYS_DIR/scripts" ] && git clone --recurse-submodules git@github.com:Achierius/scripts.git "$SYS_DIR/scripts"
 [ ! -d "$SYS_DIR/nerd-fonts" ] && git clone --filter=blob:none --sparse git@github.com:ryanoasis/nerd-fonts "$SYS_DIR/nerd-fonts"
 [ ! -d "$SYS_DIR/dotfiles" ] && git clone --recurse-submodules git@github.com:Achierius/dotfiles.git "$SYS_DIR/dotfiles"
+
+##### System-level configuration time
+# We copy etc/ style config files to avoid weirdness and unintended linkage
+
+do_linux_system_setup() {
+    install_system_file() {
+        local source=$1
+        local destination=$2
+        local mode=${3:-0644}
+
+        sudo install -D -o root -g root -m "$mode" "$source" "$destination"
+    }
+    install_system_file \
+        $cwd/system/etc/dnf/automatic.conf \
+        /etc/dnf/automatic.conf \
+        0644
+    sudo systemctl enable --now dnf5-automatic.timer
+}
+
+if [ "$(uname -s)" = Linux ]; then
+    echo "Installing Linux system configuration..."
+    do_linux_system_setup
+    echo "Complete."
+fi
