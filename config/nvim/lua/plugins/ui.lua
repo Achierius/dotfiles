@@ -159,7 +159,8 @@ return {
         float = {
           minimap_width = 24,
         },
-        x_multiplier = 4,
+        -- Set to 0.5 if you want to have better color mappings
+        y_multiplier = 1.0,
         -- Integrations read from plugins already in this config.
         treesitter = { enabled = true },   -- syntax-coloured dots
         diagnostic = { enabled = true },   -- LSP errors/warnings
@@ -167,6 +168,55 @@ return {
         search = { enabled = true },       -- search hits (off by default upstream)
         mark = { enabled = false },
       }
+    end,
+    config = function()
+      -- BUG FIX (upstream): neominimap drops every treesitter capture that
+      -- starts at column 0. Its byte->codepoint conversion does
+      -- upper_bound(utf8_pos, 0) - 1, and since vim.str_utf_pos is 1-indexed
+      -- that yields 0, which is nil in a 1-indexed Lua table, so the highlight
+      -- is silently skipped. That kills headings, list markers, blockquotes and
+      -- fences (all line-start captures) while mid-line captures (links) survive.
+      -- Clamp the index to >= 1 so column 0 maps to the first codepoint.
+      local text = require("neominimap.map.text")
+      if not text._neominimap_col0_fix then
+        local orig = text.byte_index_to_utf8_index
+        text.byte_index_to_utf8_index = function(byte_index, utf8_pos)
+          return math.max(1, orig(byte_index, utf8_pos))
+        end
+        text._neominimap_col0_fix = true
+      end
+
+      -- Separately, neominimap resolves colours from the *bare* query capture
+      -- name (e.g. @markup.heading.2), which Neovim may not define directly (it
+      -- realises @markup.heading.2.markdown -> ... -> Title instead). Bake the
+      -- resolved colour onto the bare name so its resolver finds a direct fg.
+      -- Editor appearance is unchanged (we copy the fully-resolved attributes).
+      local function resolve_hl(names)
+        for _, n in ipairs(names) do
+          local hl = vim.api.nvim_get_hl(0, { name = n, link = false })
+          if hl.fg then
+            return hl
+          end
+        end
+      end
+
+      local function pin_minimap_hl()
+        for i = 1, 6 do
+          local hl = resolve_hl({
+            "@markup.heading." .. i .. ".markdown",
+            "@markup.heading." .. i,
+            "@markup.heading",
+          })
+          if hl then
+            vim.api.nvim_set_hl(0, "@markup.heading." .. i, hl)
+          end
+        end
+        -- force neominimap to recompute its cached colours
+        pcall(function() require("neominimap.map.treesitter").clear_hl_cache() end)
+      end
+
+      pin_minimap_hl()
+      vim.api.nvim_create_autocmd("ColorScheme", { callback = pin_minimap_hl })
     end,
   },
 }
