@@ -8,7 +8,7 @@ cwd=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 LOCAL_BIN_PATH="$HOME/.local/bin"
 LOCAL_SFX_PATH="$HOME/.local/share/achierius-sfx"
 
-files_installed_in_homedir=(".bash_profile" ".bashrc" ".gitconfig" ".tmux.conf" ".vimrc" ".zprofile" ".zshenv" ".zshrc" ".aliasrc")
+files_installed_in_homedir=(".bash_profile" ".bashrc" ".gitconfig" ".tmux.conf" ".vimrc" ".zprofile" ".zshenv" ".zshrc" ".aliasrc" ".claude")
 dirs_installed_in_config=("nvim" "atuin" "uv" "sway" "swaylock" "foot" "rofi" "tmuxp" "nix" "waybar" "wireplumber")
 for bin in "$cwd"/bin/*; do
   [ -e "$bin" ] && bins_installed_in_local_bin+=("$(basename "$bin")")
